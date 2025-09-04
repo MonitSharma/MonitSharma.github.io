@@ -19,6 +19,40 @@
   <link href="/lib/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
   <link href="/css/theme.css" rel="stylesheet">
   
+  
+
+
+
+  <style>
+  /* Turn the project grid into a flex container so rows wrap without float gaps */
+  .project-grid{
+    display:flex;
+    flex-wrap:wrap;
+    margin-left:-15px;  /* keep Bootstrap gutters */
+    margin-right:-15px;
+  }
+  /* Disable Bootstrap floats for grid children in this section only */
+  .project-grid > [class*="col-"]{
+    float:none;              /* kill floats */
+    display:flex;            /* let the column stretch to match card height */
+  }
+
+  /* Make all cards feel the same height across rows */
+  .features .feature-item{
+    min-height: 300px;       /* tweak to 320–340px if any still feel taller */
+  }
+
+  /* Optional: keep titles to 2 lines to avoid super-tall cards */
+  .features .feature-item h2{
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+  }
+</style>
+
+
+
   <!-- Favicon -->
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   
@@ -57,153 +91,207 @@
     </div>
   </header>
   
-  <!-- Projects Section -->
   <section class="features" id="projects">
-    <div class="container">
-      <div class="section-heading text-center">
-        <h1>Projects</h1>
-        <p class="text-muted">
-          I work on providing free open-source learning for Quantum Computing and subjects related to programming, maths, and physics.
-          (Some projects are still in progress)
-        </p>
-        <hr>
-      </div>
-      
-      <!-- Row 1: 4 projects -->
-      <div class="row">
-        <!-- Project 1: Numerical Linear Algebra -->
-        <div class="col-md-3">
-          <div class="feature-item text-center">
-            <i class="fa fa-database text-primary fa-3x"></i>
-            <h2>Numerical Linear Algebra</h2>
-            <p class="text-muted">Computational Numerical Linear Algebra</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/Numerical-Linear-Algebra/">Project Webpage</a>
-          </div>
-        </div>
-        <!-- Project 2: Learn Quantum Computing -->
-        <div class="col-md-3">
-          <div class="feature-item text-center">
-            <i class="fa fa-tree text-primary fa-3x"></i>
-            <h2>Learn Quantum Computing</h2>
-            <p class="text-muted">Resources to learn about Quantum Computing for free.</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/Learn-Quantum-Computing-For-Free/">Project Webpage</a>
-          </div>
-        </div>
-        <!-- Project 3: Learn Quantum Computing using Qiskit -->
-        <div class="col-md-3">
-          <div class="feature-item text-center">
-            <i class="fa fa-sun-o text-primary fa-3x"></i>
-            <h2>Learn Quantum Computing using Qiskit</h2>
-            <p class="text-muted">Learn how to code programs using IBM's Qiskit package.</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/Learn-Quantum-Computing-with-Qiskit/">Project Webpage</a>
-          </div>
-        </div>
-        <!-- Project 4: Nielsen and Chuang Solutions -->
-        <div class="col-md-3">
-          <div class="feature-item text-center">
-            <i class="fa fa-heartbeat text-primary fa-3x"></i>
-            <h2>Nielsen and Chuang Solutions</h2>
-            <p class="text-muted">Solutions to problems from "QCQI by Nielsen and Chuang"</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/Nielsen-Chuang-Solutions/">Project Webpage</a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Row 2: 3 projects -->
-      <div class="row">
-        <!-- Project 5: Qiskit Summer School and Hackathon -->
-        <div class="col-md-4">
-          <div class="feature-item text-center">
-            <i class="fa fa-camera text-primary fa-3x"></i>
-            <h2>Qiskit Summer School and Hackathon</h2>
-            <p class="text-muted">Solutions to all the Hackathon events organised by Qiskit</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/Qiskit-Summer-School-and-Quantum-Challenges/">Project Webpage</a>
-          </div>
-        </div>
-        <!-- Project 6: Computational Physics -->
-        <div class="col-md-4">
-          <div class="feature-item text-center">
-            <i class="fa fa-user-md text-primary fa-3x"></i>
-            <h2>Computational Physics</h2>
-            <p class="text-muted">Learn methods used in Classical Computational Physics.</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/Computational-Methods-in-Physics/">Project Webpage</a>
-          </div>
-        </div>
-        <!-- Project 7: LeetCode Solutions -->
-        <div class="col-md-4">
-          <div class="feature-item text-center">
-            <i class="fa fa-user-md text-primary fa-3x"></i>
-            <h2>LeetCode Solutions</h2>
-            <p class="text-muted">Solutions to over 500+ Leetcode problems in Java, Python, and C++</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/LeetCode-Solutions/">Project Webpage</a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Row 3: 4 projects -->
-      <div class="row">
-        <!-- Project 8: Quantum Finance -->
-        <div class="col-md-3">
-          <div class="feature-item text-center">
-            <i class="fa fa-location-arrow text-primary fa-3x"></i>
-            <h2>Quantum Finance</h2>
-            <p class="text-muted">Learn how to use quantum computing in Finance.</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/Quantum-Finance-and-Numerical-Methods/">Project Webpage</a>
-          </div>
-        </div>
-        <!-- Project 9: Quantum Papers Explained with Code -->
-        <div class="col-md-3">
-          <div class="feature-item text-center">
-            <i class="fa fa-tree text-primary fa-3x"></i>
-            <h2>Quantum Papers Explained with Code</h2>
-            <p class="text-muted">Code for specific quantum papers I've read. Check my Medium blogs for more.</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/Quantum-Papers-Explained-with-Code/">Project Webpage</a>
-          </div>
-        </div>
-        <!-- Project 10: Quantum Machine Learning on Near Term Quantum Devices -->
-        <div class="col-md-3">
-          <div class="feature-item text-center">
-            <i class="fa fa-user-md text-primary fa-3x"></i>
-            <h2>Quantum Machine Learning on Near Term Quantum Devices</h2>
-            <p class="text-muted">Projects highlighting the use of Quantum Machine Learning in various domains.</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/Quantum-Machine-Learning-on-Near-Term-Quantum-Devices/">Project Webpage</a>
-          </div>
-        </div>
-        <!-- Project 11: Quantum Codebooks -->
-        <div class="col-md-3">
-          <div class="feature-item text-center">
-            <i class="fa fa-heartbeat text-primary fa-3x"></i>
-            <h2>Quantum Codebooks</h2>
-            <p class="text-muted">Solutions for open source quantum computing learning books, including the Qiskit textbook and Xanadu's codebook.</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/Quantum-Codebooks/">Project Webpage</a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Row 4: 2 projects -->
-      <div class="row">
-        <!-- Project 12: Learn Quantum Machine Learning -->
-        <div class="col-md-6">
-          <div class="feature-item text-center">
-            <i class="fa fa-tree text-primary fa-3x"></i>
-            <h2>Learn Quantum Machine Learning</h2>
-            <p class="text-muted">Get started with Quantum Machine Learning and its various techniques.</p>
-            <a class="btn btn-default" href="https://monitsharma.github.io/Learn-Quantum-Machine-Learning/">Project Webpage</a>
-          </div>
-        </div>
-        <!-- Project 13: Qiskit Hindi -->
-        <div class="col-md-6">
-          <div class="feature-item text-center">
-            <i class="fa fa-user-md text-primary fa-3x"></i>
-            <h2>Qiskit Hindi</h2>
-            <p class="text-muted">Translating Qiskit tutorials in Hindi and adding more information.</p>
-            <a class="btn btn-default" href="https://github.com/MonitSharma/Qiskit-Hindi-Tutorials">Project Webpage</a>
-          </div>
-        </div>
-      </div>
-      
+  <div class="container">
+    <div class="section-heading text-center">
+      <h1>Projects</h1>
+      <p class="text-muted">
+        I work on providing free open-source learning for Quantum Computing and subjects related to programming, maths, and physics.
+        (Some projects are still in progress)
+      </p>
+      <hr>
     </div>
-  </section>
+
+    <div class="section-heading text-center" style="margin-bottom:10px;">
+      <h2>Featured Learning Tracks</h2>
+      <p class="text-muted">Pick a path and dive in.</p>
+    </div>
+
+    <div class="row project-grid">
+      <!-- 1) Parallel Adventures -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-rocket text-primary fa-3x"></i>
+          <h2>Parallel Adventures</h2>
+          <p class="text-muted">CUDA, C/C++, JAX & more.</p>
+          <a class="btn btn-default" href="https://github.com/MonitSharma/parallel_adventures">Open on GitHub</a>
+        </div>
+      </div>
+
+      <!-- 2) Reinforcement Learning -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-graduation-cap text-primary fa-3x"></i>
+          <h2>Reinforcement Learning</h2>
+          <p class="text-muted">Implement classic & modern RL.</p>
+          <a class="btn btn-default" href="https://github.com/MonitSharma/reinforcement-learning-algorithms">Open on GitHub</a>
+        </div>
+      </div>
+
+      <!-- 3) Roadmap to LLMs -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-book text-primary fa-3x"></i>
+          <h2>Roadmap to LLMs</h2>
+          <p class="text-muted">Your path into LLMs.</p>
+          <a class="btn btn-default" href="https://github.com/MonitSharma/Roadmap-to-LLMs">Open on GitHub</a>
+        </div>
+      </div>
+
+      <!-- 4) Build AI Agents -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-cogs text-primary fa-3x"></i>
+          <h2>Build AI Agents</h2>
+          <p class="text-muted">Agentic workflows & patterns.</p>
+          <a class="btn btn-default" href="https://github.com/MonitSharma/build-ai-agents">Open on GitHub</a>
+        </div>
+      </div>
+
+      <!-- 5) Learn MCP -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-plug text-primary fa-3x"></i>
+          <h2>Learn MCP</h2>
+          <p class="text-muted">Model Context Protocol, hands-on.</p>
+          <a class="btn btn-default" href="https://github.com/MonitSharma/learn-mcp">Open on GitHub</a>
+        </div>
+      </div>
+
+      <!-- 6) Numerical Linear Algebra -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-calculator text-primary fa-3x"></i>
+          <h2>Numerical Linear Algebra</h2>
+          <p class="text-muted">Computational Numerical Linear Algebra</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/Numerical-Linear-Algebra/">Explore the course</a>
+        </div>
+      </div>
+
+      <!-- 7) Learn Quantum Computing -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-flask text-primary fa-3x"></i>
+          <h2>Learn Quantum Computing</h2>
+          <p class="text-muted">Resources to learn QC for free.</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/Learn-Quantum-Computing-For-Free/">Start learning</a>
+        </div>
+      </div>
+
+      <!-- 8) Learn QC using Qiskit -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-code text-primary fa-3x"></i>
+          <h2>Learn QC using Qiskit</h2>
+          <p class="text-muted">Code programs with IBM Qiskit.</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/Learn-Quantum-Computing-with-Qiskit/">Start Qiskit path</a>
+        </div>
+      </div>
+
+      <!-- 9) Nielsen and Chuang Solutions -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-book text-primary fa-3x"></i>
+          <h2>Nielsen and Chuang Solutions</h2>
+          <p class="text-muted">Solutions to problems from QCQI.</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/Nielsen-Chuang-Solutions/">Browse solutions</a>
+        </div>
+      </div>
+
+      <!-- 10) Qiskit Summer School & Hackathon -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-trophy text-primary fa-3x"></i>
+          <h2>Qiskit Summer School & Hackathon</h2>
+          <p class="text-muted">All IBM Qiskit challenges.</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/Qiskit-Summer-School-and-Quantum-Challenges/">Explore challenges</a>
+        </div>
+      </div>
+
+      <!-- 11) Computational Physics -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-cogs text-primary fa-3x"></i>
+          <h2>Computational Physics</h2>
+          <p class="text-muted">Classical computational methods.</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/Computational-Methods-in-Physics/">See tutorials</a>
+        </div>
+      </div>
+
+      <!-- 12) LeetCode Solutions -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-puzzle-piece text-primary fa-3x"></i>
+          <h2>LeetCode Solutions</h2>
+          <p class="text-muted">500+ problems in Java, Py, C++.</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/LeetCode-Solutions/">Browse solutions</a>
+        </div>
+      </div>
+
+      <!-- 13) Quantum Finance -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-line-chart text-primary fa-3x"></i>
+          <h2>Quantum Finance</h2>
+          <p class="text-muted">QC in finance, hands-on labs.</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/Quantum-Finance-and-Numerical-Methods/">Explore finance labs</a>
+        </div>
+      </div>
+
+      <!-- 14) Quantum Papers Explained with Code -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-file-text-o text-primary fa-3x"></i>
+          <h2>Quantum Papers: Code</h2>
+          <p class="text-muted">Read papers with runnable code.</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/Quantum-Papers-Explained-with-Code/">Read with code</a>
+        </div>
+      </div>
+
+      <!-- 15) QML on Near-Term Devices -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-sliders text-primary fa-3x"></i>
+          <h2>QML on Near-Term Devices</h2>
+          <p class="text-muted">Projects & case studies.</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/Quantum-Machine-Learning-on-Near-Term-Quantum-Devices/">View projects</a>
+        </div>
+      </div>
+
+      <!-- 16) Quantum Codebooks -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-bookmark text-primary fa-3x"></i>
+          <h2>Quantum Codebooks</h2>
+          <p class="text-muted">Qiskit & Xanadu codebooks.</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/Quantum-Codebooks/">Open codebooks</a>
+        </div>
+      </div>
+
+      <!-- 17) Learn Quantum ML -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-graduation-cap text-primary fa-3x"></i>
+          <h2>Learn Quantum ML</h2>
+          <p class="text-muted">Get started with QML.</p>
+          <a class="btn btn-default" href="https://monitsharma.github.io/Learn-Quantum-Machine-Learning/">Start QML path</a>
+        </div>
+      </div>
+
+      <!-- 18) Qiskit Hindi -->
+      <div class="col-xs-12 col-sm-6 col-md-4 project-col">
+        <div class="feature-item text-center">
+          <i class="fa fa-language text-primary fa-3x"></i>
+          <h2>Qiskit Hindi</h2>
+          <p class="text-muted">Qiskit tutorials in Hindi.</p>
+          <a class="btn btn-default" href="https://github.com/MonitSharma/Qiskit-Hindi-Tutorials">View Hindi guides</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
   
   <!-- About Me Section -->
   <section class="gray features" id="people">
