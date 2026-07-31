@@ -25,10 +25,13 @@
   .cat-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem,2.6vw,2.1rem); letter-spacing: -0.015em; }
   .cat-head .ct { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; color: var(--ink-3); }
 
-  .track-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 22px; }
+  /* hairlines are drawn per-card, not by bleeding a container background through
+     1px gaps — otherwise a partly-filled last row renders as solid grey blocks */
+  .track-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 22px; }
   .track {
     background: var(--paper); padding: 24px 24px 22px; display: flex; flex-direction: column; min-height: 196px;
     position: relative; transition: background .2s; isolation: isolate;
+    box-shadow: 0 0 0 1px var(--line);
   }
   .track:hover { background: var(--paper-2); }
   .track .tnum { font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em; }
