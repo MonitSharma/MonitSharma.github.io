@@ -1,0 +1,46 @@
+- medium_url: https://medium.com/@_monitsharma/quantum-optimization-on-real-hardware-what-247-experiments-on-ibm-heron-revealed-49c6f53a7cc9?source=rss-f5df08a10024------2
+  discovered_title: "Quantum Optimization on Real Hardware: What 247 Experiments
+    on IBM Heron Revealed"
+  date: 2026-08-10
+  series: Quantum Hardware
+  tags:
+    - quantum computing
+    - quantum hardware
+    - quantum optimization
+  local_slug: quantum-optimization-on-real-hardware
+  migration_status: migrated_from_rss
+  image_status: review_required (11 blank alt text)
+  link_status: requires_manual_review
+  review_notes: Source image alt text was empty; meaningful descriptions must be
+    supplied by the author.
+- medium_url: https://medium.com/@_monitsharma/can-a-macbook-simulate-quantum-circuits-fast-writing-custom-metal-kernels-for-apple-silicon-03194f54923c?source=rss-f5df08a10024------2
+  discovered_title: Can a MacBook Simulate Quantum Circuits Fast? Writing Custom
+    Metal Kernels for Apple Silicon
+  date: 2026-07-20
+  series: Systems & Performance
+  tags:
+    - quantum simulation
+    - Apple Silicon
+    - MettleQ
+    - GPU computing
+  local_slug: mettleq-on-apple-silicon
+  migration_status: migrated_from_rss
+  image_status: review_required (11 blank alt text)
+  link_status: requires_manual_review
+  review_notes: Source image alt text was empty; meaningful descriptions must be
+    supplied by the author.
+- medium_url: https://medium.com/@_monitsharma/the-key-to-the-quantum-garden-indias-1-000-km-leap-into-un-hackable-communication-ab6277f0f98e?source=rss-f5df08a10024------2
+  discovered_title: "The Key to the Quantum Garden: India’s 1,000 km Leap Into
+    Un-hackable Communication"
+  date: 2026-04-10
+  series: Quantum in Public
+  tags:
+    - quantum communication
+    - quantum computing
+    - public explainer
+  local_slug: quantum-garden-quantum-communication
+  migration_status: migrated_from_rss
+  image_status: review_required (10 blank alt text)
+  link_status: requires_manual_review
+  review_notes: Source image alt text was empty; meaningful descriptions must be
+    supplied by the author.

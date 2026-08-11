@@ -1,0 +1,8 @@
+name: Quantum Hardware
+slug: quantum-hardware
+description: What survives when quantum algorithms leave the simulator and meet calibration, compilation, and noise.
+articles:
+  - quantum-optimization-on-real-hardware
+upcoming:
+  - order: 2
+    title: Reproducible benchmarks for noisy optimization

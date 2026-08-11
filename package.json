@@ -4,7 +4,14 @@
   "description": "Website for the Stanford Machine Learning Group",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:writing && npm run build:legacy",
+    "build:legacy": "node scripts/build-legacy.js",
+    "build:writing": "node scripts/writing-build.js",
+    "migrate:medium": "node scripts/migrate-medium.js",
+    "audit:links": "node scripts/audit-links.js",
+    "audit:a11y": "node scripts/audit-accessibility.js",
+    "test": "node --test tests/*.test.js",
+    "test:writing": "node --test tests/writing.test.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +30,17 @@
     "gulp-pug": "^3.3.0",
     "gulp-watch": "^4.3.11",
     "moment": "^2.22.2",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-katex": "^2.0.3",
+    "rss-parser": "^3.13.0",
+    "turndown": "^7.2.0",
+    "turndown-plugin-gfm": "^1.0.2",
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1"

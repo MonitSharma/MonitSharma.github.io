@@ -1,0 +1,36 @@
+# Writing build report
+
+- Published posts: 3
+- Series: 3
+- Tags: 9
+- Warnings: 29
+
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*B9W-1s4kMCZOIBGw5RerAA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*5n3tF05zMfHKfPzWxx_MeQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*2C0pqp70_BDb2xTFwSogLQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*RymM_2UIOPaH5ugM2dp67g.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*ROHNtQkEuxORp84_Z9SF6w.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/392/1*fdhOpa0HLQ-l0iFTo1Q9dA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/228/1*aj5wtBbWSpXaNgStZau84w.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*w5VHrmycbnnXqsjlytmDKQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*oQvEQtREr3Tndynr2aoA5w.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*aZy0pXa2H1fjsVtpZeEKuQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*blvVa_bpymCJbrRxfDxKIg.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*EjAMpLzngXrgGXfaXBZ2iA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*0tueM9630_qFON100sYwTQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*nidvN9Lsoz1Ab-_G46eEjQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*kJdikVBuHSVL6upZ761aHA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*YpvHuivL32Vfc4EBZzId5Q.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*r7ZgEq9l2jVT5dmt8sFFeA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*PiRcEg76xvtoq538g7i5hA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*Rd988EZ1-0qwGrieLgIIxw.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*8AODqPnH71FHnpguTqt8Jw.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*Tw8egxWjN8QBQYuVOWebgQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*LJdlh6T-ZZg0myI6Ko2pOQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*NnE50qdYc7AqpFz4KFucFg.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*1AbwgWKof-vSUw4S-7B7SA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*3JrpdhNy8IqxTm35hd0mMQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*C4ej07h24KL2fOuoiuW0xw.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*KqzWEETKRllCem0vSRE0Lw.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*HTmva1sy4LeHFeO2iuc_Mw.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*6jEULaEz8ADpwK9ckK2QnQ.png

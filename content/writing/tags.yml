@@ -1,0 +1,18 @@
+quantum computing:
+  description: The algorithms, systems, and practical limits of quantum computing.
+quantum hardware:
+  description: Devices, noise, calibration, and the engineering of quantum processors.
+quantum optimization:
+  description: Optimization methods and the classical-quantum boundary.
+quantum simulation:
+  description: Simulation algorithms, statevectors, and accelerated numerical workloads.
+Apple Silicon:
+  description: Computing experiments on Apple Silicon and its unified-memory architecture.
+MettleQ:
+  description: Notes from the MettleQ quantum-simulation project.
+GPU computing:
+  description: Kernels, memory movement, and measured accelerator performance.
+quantum communication:
+  description: Quantum networking, secure communication, and the infrastructure around it.
+public explainer:
+  description: Quantum writing intended to be useful beyond the specialist audience.

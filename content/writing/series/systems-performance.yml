@@ -1,0 +1,5 @@
+name: Systems & Performance
+slug: systems-performance
+description: Practical notes on simulators, accelerators, memory movement, and the engineering work behind quantum software.
+articles:
+  - mettleq-on-apple-silicon
