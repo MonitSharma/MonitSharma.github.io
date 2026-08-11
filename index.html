@@ -26,6 +26,19 @@
   .route-title { font: 400 1.12rem var(--serif); }
   .route-note { display: block; margin-top: 3px; color: var(--ink-3); font: 10px var(--mono); letter-spacing: .03em; }
   .route-arrow { color: var(--ink-3); font: 12px var(--mono); }
+  .hero-visual { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; }
+  .orbit { position: absolute; top: 0; right: 0; width: min(100%, 280px); aspect-ratio: 1; }
+  .orbit .ring { position: absolute; inset: 0; border: 1px solid var(--line); border-radius: 50%; }
+  .orbit .ring.r2 { inset: 15%; border-color: color-mix(in oklch, var(--accent) 35%, var(--line)); }
+  .orbit .ring.r3 { inset: 32%; }
+  .orbit .core { position: absolute; inset: 44%; border-radius: 50%; background: var(--accent); box-shadow: 0 0 50px -6px var(--accent); }
+  .orbit .node { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); }
+  .orbit .e1, .orbit .e2 { position: absolute; inset: 0; animation: spin 18s linear infinite; }
+  .orbit .e2 { inset: 15%; animation-duration: 12s; animation-direction: reverse; }
+  .orbit .e1 .node { top: -6px; left: calc(50% - 6px); }
+  .orbit .e2 .node { top: 15%; left: calc(15% - 6px); background: var(--accent); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .orbit .e1, .orbit .e2 { animation: none; } }
 
   .section-intro { display: grid; grid-template-columns: .65fr 1.35fr; gap: clamp(28px, 7vw, 88px); margin-bottom: 34px; align-items: start; }
   .section-intro h2 { max-width: 14ch; font: 400 clamp(2.1rem, 4.4vw, 3.7rem)/1 var(--serif); letter-spacing: -.025em; }
@@ -103,6 +116,8 @@
   @media (max-width: 920px) {
     .hero-grid, .writing-layout { grid-template-columns: 1fr; }
     .hero-grid { align-items: start; }
+    .hero-visual { align-self: auto; }
+    .orbit { position: relative; top: auto; right: auto; width: min(100%, 250px); margin: 0 auto 48px; }
     .route-list { max-width: 620px; }
     .track-grid, .lect-grid { grid-template-columns: repeat(2, 1fr); }
   }
@@ -159,10 +174,20 @@
         <a class="btn btn-ghost" href="writing/index.html">Read the writing <span class="arr">↗</span></a>
       </div>
     </div>
-    <div class="route-list" aria-label="Choose how to use the classroom">
-      <a class="route" href="#library"><span class="route-num">01</span><span><span class="route-title">Learn</span><span class="route-note">Courses, codebooks, and guided paths</span></span><span class="route-arrow">→</span></a>
-      <a class="route" href="#practice"><span class="route-num">02</span><span><span class="route-title">Practice</span><span class="route-note">Work through focused coding exercises</span></span><span class="route-arrow">→</span></a>
-      <a class="route" href="#writing"><span class="route-num">03</span><span><span class="route-title">Read</span><span class="route-note">Technical articles and research series</span></span><span class="route-arrow">→</span></a>
+    <div class="hero-visual">
+      <div class="orbit" aria-hidden="true">
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+        <div class="ring r3"></div>
+        <div class="e1"><span class="node"></span></div>
+        <div class="e2"><span class="node"></span></div>
+        <div class="core"></div>
+      </div>
+      <div class="route-list" aria-label="Choose how to use the classroom">
+        <a class="route" href="#library"><span class="route-num">01</span><span><span class="route-title">Learn</span><span class="route-note">Courses, codebooks, and guided paths</span></span><span class="route-arrow">→</span></a>
+        <a class="route" href="#practice"><span class="route-num">02</span><span><span class="route-title">Practice</span><span class="route-note">Work through focused coding exercises</span></span><span class="route-arrow">→</span></a>
+        <a class="route" href="#writing"><span class="route-num">03</span><span><span class="route-title">Read</span><span class="route-note">Technical articles and research series</span></span><span class="route-arrow">→</span></a>
+      </div>
     </div>
   </div>
 </section>
