@@ -42,6 +42,14 @@
   .track:hover .go { color: var(--accent); gap: 11px; }
   .track .src { position: absolute; top: 24px; right: 24px; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); border: 1px solid var(--line); border-radius: 999px; padding: 3px 7px; }
 
+  /* practice lab */
+  .lab-promo { border-top: 1px solid var(--line); }
+  .lab-promo-grid { align-items: end; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; margin-top: 22px; }
+  .lab-promo h2 { font-family: var(--serif); font-size: clamp(1.9rem, 4vw, 3.25rem); font-weight: 400; line-height: 1.02; max-width: 14ch; }
+  .lab-promo p { color: var(--ink-2); line-height: 1.6; margin-top: 16px; max-width: 58ch; }
+  .lab-promo-link { align-items: center; border-bottom: 1px solid var(--accent); color: var(--ink); display: inline-flex; font-family: var(--mono); font-size: 11px; gap: 10px; padding-bottom: 8px; text-decoration: none; white-space: nowrap; }
+  .lab-promo-link:hover { color: var(--accent); }
+
   /* lecture series */
   .lect-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 24px; }
   .lect {
@@ -62,7 +70,7 @@
   .cx .cxh { font-family: var(--mono); font-size: 9.5px; color: var(--ink-3); margin-top: 6px; letter-spacing: 0.04em; }
 
   @media (max-width: 920px){ .track-grid{ grid-template-columns: repeat(2,1fr);} .lect-grid{ grid-template-columns: repeat(2,1fr);} .connect-grid{ grid-template-columns: repeat(3,1fr);} }
-  @media (max-width: 600px){ .track-grid{ grid-template-columns: 1fr;} .lect-grid{ grid-template-columns: 1fr;} .connect-grid{ grid-template-columns: repeat(2,1fr);} }
+  @media (max-width: 600px){ .track-grid{ grid-template-columns: 1fr;} .lab-promo-grid{ align-items: start; grid-template-columns: 1fr;} .lect-grid{ grid-template-columns: 1fr;} .connect-grid{ grid-template-columns: repeat(2,1fr);} }
 </style>
 </head>
 <body>
@@ -76,6 +84,7 @@
     </a>
     <nav class="navlinks">
       <a href="#tracks">Tracks</a>
+      <a href="practice.html">Practice Lab</a>
       <a href="#lectures">Lectures</a>
       <a href="#connect">Connect</a>
       <a href="https://monitsharma.github.io/portfolio/">Portfolio ↗</a>
@@ -102,10 +111,24 @@
   </div>
 </section>
 
+<!-- PRACTICE LAB -->
+<section class="section lab-promo" id="practice">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">01</span> Practice Lab</div>
+    <div class="lab-promo-grid">
+      <div>
+        <h2>Practise quantum, algorithms, and GPU code.</h2>
+        <p>Choose a focused collection, write code in the browser notebook, run sample checks, and submit against the complete assessment.</p>
+      </div>
+      <a class="lab-promo-link" href="practice.html">Open the practice lab &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <!-- TRACKS -->
 <section class="section" id="tracks" style="padding-top: calc(48px * var(--density))">
   <div class="wrap">
-    <div class="eyebrow"><span class="num">01</span> Learning Tracks</div>
+    <div class="eyebrow"><span class="num">02</span> Learning Tracks</div>
 
     <!-- Quantum Computing -->
     <div class="cat-head"><h2>Quantum Computing</h2><span class="ct">07 tracks</span></div>
@@ -150,7 +173,7 @@
 <!-- LECTURE SERIES -->
 <section class="section" id="lectures">
   <div class="wrap">
-    <div class="eyebrow"><span class="num">02</span> Lecture Series</div>
+    <div class="eyebrow"><span class="num">03</span> Lecture Series</div>
     <p class="lead" style="max-width:54ch; margin-bottom:8px;">Long-form written series, published on Medium.</p>
     <div class="lect-grid">
       <a class="lect" href="https://medium.com/@_monitsharma/list/computational-physics-and-scientific-programming-f8d4b52726ba" target="_blank" rel="noopener"><span class="ll">Series 01</span><h3>Computational Physics &amp; Scientific Programming</h3><span class="go">Read the series ↗</span></a>
@@ -166,7 +189,7 @@
 <!-- CONNECT -->
 <section class="section" id="connect">
   <div class="wrap">
-    <div class="eyebrow"><span class="num">03</span> Connect</div>
+    <div class="eyebrow"><span class="num">04</span> Connect</div>
     <div class="connect-grid">
       <a class="cx" href="https://medium.com/@_monitsharma" target="_blank" rel="noopener"><div class="cxn">Medium</div><div class="cxh">@_monitsharma</div></a>
       <a class="cx" href="https://www.linkedin.com/in/monitsharma/" target="_blank" rel="noopener"><div class="cxn">LinkedIn</div><div class="cxh">/in/monitsharma</div></a>

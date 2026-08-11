@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Practice Lab - The Quantum Classroom</title>
+<meta name="description" content="Browser-based notebook exercises for quantum computing, CUDA, GPU programming, algorithms and Python.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="design-system.css" rel="stylesheet">
+<style>
+  :root { --lab-green: #2f6b57; --lab-blue: #3f6378; --lab-red: #a44f43; }
+  body { background: var(--paper-2); }
+  .lab-hero { padding-top: clamp(48px, 8vh, 92px); padding-bottom: 42px; border-bottom: 1px solid var(--line); }
+  .lab-kick, .lab-label, .cell-meta, .test-label, .progress-label, .filter-count { font-family: var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+  .lab-kick { color: var(--accent); font-size: 12px; margin-bottom: 22px; }
+  .lab-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.8rem, 7vw, 5.4rem); line-height: .98; max-width: 15ch; letter-spacing: -.025em; }
+  .lab-hero h1 em { color: var(--accent); font-style: italic; }
+  .lab-sub { color: var(--ink-2); font-size: 1.08rem; line-height: 1.6; max-width: 62ch; margin-top: 24px; }
+  .lab-stats { display: flex; flex-wrap: wrap; gap: 34px; margin-top: 36px; }
+  .lab-stat .value { font-family: var(--serif); font-size: 2rem; line-height: 1; }
+  .lab-stat .label { color: var(--ink-3); font-family: var(--mono); font-size: 10px; letter-spacing: .07em; text-transform: uppercase; margin-top: 8px; }
+
+  .lab-shell { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 32px; padding-top: 40px; padding-bottom: 80px; }
+  .lab-sidebar { align-self: start; position: sticky; top: 24px; }
+  .lab-label { color: var(--ink-3); font-size: 10px; margin-bottom: 12px; }
+  .filter-list { display: grid; gap: 6px; }
+  .filter-btn { appearance: none; background: transparent; border: 1px solid transparent; color: var(--ink-2); cursor: pointer; display: grid; gap: 4px; padding: 11px; text-align: left; width: 100%; font: inherit; }
+  .filter-btn:hover { background: var(--paper); border-color: var(--line); }
+  .filter-btn.active { background: var(--paper); border-color: var(--accent); color: var(--ink); }
+  .filter-count { color: var(--ink-3); font-size: 9px; }
+  .progress-block { background: var(--paper); border: 1px solid var(--line); margin-top: 30px; padding: 18px; }
+  .progress-row { display: flex; justify-content: space-between; gap: 10px; color: var(--ink-2); font-size: 12px; }
+  .progress-label { color: var(--ink-3); font-size: 10px; }
+  .progress-track { background: var(--line); height: 4px; margin-top: 14px; overflow: hidden; }
+  .progress-bar { background: var(--accent); height: 100%; transition: width .25s ease; width: 0; }
+  .lab-main { min-width: 0; }
+  .catalog { background: var(--paper); border: 1px solid var(--line); margin-top: 30px; }
+  .catalog summary { align-items: center; cursor: pointer; display: flex; justify-content: space-between; gap: 20px; list-style: none; padding: 18px 20px; }
+  .catalog summary::-webkit-details-marker { display: none; }
+  .catalog summary:hover { background: var(--paper-2); }
+  .catalog[open] summary { border-bottom: 1px solid var(--line); }
+  .catalog-summary-title { display: grid; gap: 5px; }
+  .catalog-summary-title .lab-label { margin: 0; }
+  .catalog-summary-title strong { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; }
+  .catalog-summary-meta { color: var(--ink-3); font-family: var(--mono); font-size: 10px; text-align: right; text-transform: uppercase; }
+  .catalog-body { padding: 22px 20px; }
+  .catalog-head { align-items: start; display: flex; justify-content: space-between; gap: 20px; }
+  .catalog-source { color: var(--accent); font-family: var(--mono); font-size: 10px; text-decoration: none; text-transform: uppercase; }
+  .catalog-copy { color: var(--ink-2); line-height: 1.55; margin: 0; max-width: 68ch; }
+  .catalog-tools { align-items: center; display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr) auto; margin-top: 20px; }
+  .catalog-search { background: var(--paper); border: 1px solid var(--line); border-radius: 0; color: var(--ink); font: 13px var(--mono); min-width: 0; outline: none; padding: 11px 12px; width: 100%; }
+  .catalog-search:focus { border-color: var(--accent); }
+  .catalog-status { color: var(--ink-3); font-family: var(--mono); font-size: 10px; white-space: nowrap; }
+  .catalog-list { border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr; list-style: none; margin: 18px 0 0; max-height: 360px; overflow: auto; padding: 0; }
+  .catalog-list li { border-bottom: 1px solid var(--line); min-width: 0; }
+  .catalog-list a { align-items: baseline; color: var(--ink-2); display: grid; font-size: 13px; gap: 9px; grid-template-columns: 28px minmax(0, 1fr); padding: 10px 12px; text-decoration: none; }
+  .catalog-list a:hover { background: var(--paper); color: var(--accent); }
+  .catalog-index { color: var(--ink-3); font-family: var(--mono); font-size: 9px; }
+  .catalog-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .catalog-more { margin-top: 14px; }
+  .catalog-more[hidden] { display: none; }
+  .lab-main-head { align-items: end; display: flex; justify-content: space-between; gap: 20px; margin-bottom: 22px; }
+  .lab-main-head h2 { font-family: var(--serif); font-size: clamp(1.7rem, 3vw, 2.45rem); font-weight: 400; line-height: 1.05; }
+  .exercise-position { color: var(--ink-3); font-family: var(--mono); font-size: 11px; white-space: nowrap; }
+  .exercise-card { background: var(--paper); border: 1px solid var(--line); }
+  .exercise-top { border-bottom: 1px solid var(--line); display: flex; align-items: start; justify-content: space-between; gap: 18px; padding: 26px; }
+  .exercise-domain { color: var(--accent); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+  .exercise-title { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 400; line-height: 1.05; margin-top: 10px; }
+  .exercise-prompt { color: var(--ink-2); line-height: 1.6; margin-top: 14px; max-width: 64ch; }
+  .complete-mark { align-items: center; border: 1px solid var(--line); color: var(--ink-3); display: inline-flex; font-family: var(--mono); font-size: 10px; gap: 7px; padding: 6px 8px; white-space: nowrap; }
+  .complete-mark.done { border-color: var(--lab-green); color: var(--lab-green); }
+  .target-strip { background: var(--paper-2); border-bottom: 1px solid var(--line); color: var(--ink-2); font-size: 13px; line-height: 1.5; padding: 14px 26px; }
+  .target-strip strong { color: var(--ink); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; margin-right: 10px; text-transform: uppercase; }
+
+  .notebook { padding: 26px; }
+  .cell { border: 1px solid var(--line); }
+  .cell-head { align-items: center; background: var(--paper-2); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding: 9px 12px; }
+  .cell-meta { color: var(--ink-3); font-size: 10px; }
+  .cell-status { color: var(--ink-3); font-family: var(--mono); font-size: 10px; }
+  .cell-status.pass { color: var(--lab-green); }
+  .cell-status.fail { color: var(--lab-red); }
+  textarea { background: #172321; border: 0; border-radius: 0; box-sizing: border-box; color: #e7f0e9; display: block; font-family: var(--mono); font-size: 13px; line-height: 1.65; min-height: 280px; outline: none; padding: 18px; resize: vertical; tab-size: 2; width: 100%; }
+  textarea:focus { box-shadow: inset 0 0 0 2px var(--accent); }
+  .cell-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
+  .action-btn { align-items: center; background: var(--ink); border: 1px solid var(--ink); color: var(--paper); cursor: pointer; display: inline-flex; font-family: var(--mono); font-size: 11px; gap: 8px; letter-spacing: .04em; padding: 10px 13px; }
+  .action-btn:hover { background: var(--accent); border-color: var(--accent); }
+  .action-btn.secondary { background: transparent; border-color: var(--line); color: var(--ink-2); }
+  .action-btn.secondary:hover { background: var(--paper-2); border-color: var(--accent); color: var(--ink); }
+  .action-btn:disabled { cursor: default; opacity: .45; }
+  .hint-count { color: var(--ink-3); font-family: var(--mono); font-size: 10px; margin-left: auto; }
+  .hint-box { background: #f1eee5; border-left: 3px solid var(--accent); color: var(--ink-2); display: none; font-size: 13px; line-height: 1.55; margin-top: 14px; padding: 13px 15px; }
+  .hint-box.visible { display: block; }
+
+  .assessment-panel { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 24px; }
+  .assessment-head { align-items: baseline; display: flex; justify-content: space-between; gap: 16px; }
+  .assessment-head h3 { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; }
+  .assessment-meta { color: var(--ink-3); font-family: var(--mono); font-size: 10px; text-transform: uppercase; }
+  .assessment-copy { color: var(--ink-2); font-size: 13px; line-height: 1.55; margin-top: 8px; max-width: 62ch; }
+  .sample-cases { display: grid; gap: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 16px; }
+  .sample-case { background: var(--paper-2); border: 1px solid var(--line); padding: 12px; }
+  .sample-case .case-label { color: var(--ink-3); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+  .sample-case code { color: var(--ink); display: block; font-family: var(--mono); font-size: 11px; margin-top: 7px; overflow-wrap: anywhere; }
+  .assessment-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
+  .assessment-status { color: var(--ink-3); font-family: var(--mono); font-size: 10px; margin-left: auto; text-transform: uppercase; }
+  .assessment-status.pass { color: var(--lab-green); }
+  .assessment-status.fail { color: var(--lab-red); }
+
+  .results { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 24px; }
+  .results-head { align-items: baseline; display: flex; justify-content: space-between; gap: 16px; }
+  .results-head h3 { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; }
+  .result-summary { color: var(--ink-3); font-family: var(--mono); font-size: 10px; text-transform: uppercase; }
+  .result-summary.pass { color: var(--lab-green); }
+  .result-summary.fail { color: var(--lab-red); }
+  .test-list { display: grid; gap: 7px; margin-top: 14px; }
+  .test-item { align-items: start; border-bottom: 1px solid var(--line); display: grid; gap: 11px; grid-template-columns: 18px 1fr auto; padding: 11px 0; }
+  .test-icon { color: var(--ink-3); font-family: var(--mono); }
+  .test-item.pass .test-icon { color: var(--lab-green); }
+  .test-item.fail .test-icon { color: var(--lab-red); }
+  .test-name { font-size: 13px; }
+  .test-label { color: var(--ink-3); font-size: 9px; }
+  .next-row { display: flex; justify-content: end; margin-top: 22px; }
+  .empty-state { border: 1px dashed var(--line); color: var(--ink-3); line-height: 1.6; padding: 40px; text-align: center; }
+
+  @media (max-width: 800px) { .lab-shell { grid-template-columns: 1fr; padding-top: 28px; } .lab-sidebar { position: static; } .filter-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } .progress-block { margin-top: 18px; } }
+  @media (max-width: 560px) { .filter-list, .catalog-list { grid-template-columns: 1fr; } .catalog summary, .catalog-head, .catalog-tools, .lab-main-head, .exercise-top { align-items: start; display: flex; flex-direction: column; } .catalog-summary-meta { text-align: left; } .catalog-status { white-space: normal; } .exercise-top, .notebook { padding: 20px; } .target-strip { padding: 13px 20px; } .hint-count, .assessment-status { margin-left: 0; width: 100%; } .sample-cases { grid-template-columns: 1fr; } textarea { min-height: 240px; } }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="./"><span class="dot"></span><span class="name">Monit Sharma</span></a>
+    <nav class="navlinks">
+      <a href="./#tracks">Tracks</a>
+      <a href="#lab">Practice Lab</a>
+      <a href="./#lectures">Lectures</a>
+      <a href="https://monitsharma.github.io/portfolio/">Portfolio &rarr;</a>
+    </nav>
+  </div>
+</header>
+
+<main id="lab">
+  <section class="lab-hero">
+    <div class="wrap">
+      <div class="lab-kick">Practice Lab / Browser Notebook</div>
+      <h1>Write the missing lines. <em>See what passes.</em></h1>
+      <p class="lab-sub">Three independent practice collections built from your open-source work. Work through focused browser assessments in quantum computing, algorithm design, or GPU programming, and open the optional source library only when you need a reference. Progress stays in this browser.</p>
+      <div class="lab-stats">
+        <div class="lab-stat"><div class="value">132</div><div class="label">Quantum notebooks</div></div>
+        <div class="lab-stat"><div class="value">552+</div><div class="label">LeetCode problems</div></div>
+        <div class="lab-stat"><div class="value">05</div><div class="label">LeetGPU kernels</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap lab-shell">
+    <aside class="lab-sidebar" aria-label="Practice collections">
+      <div class="lab-label">Choose a collection</div>
+      <div class="filter-list" id="filters"></div>
+      <div class="progress-block">
+        <div class="progress-row"><span class="progress-label">Collection progress</span><span id="progress-text">0 / 4</span></div>
+        <div class="progress-track"><div class="progress-bar" id="progress-bar"></div></div>
+        <p style="color:var(--ink-3);font-size:11px;line-height:1.5;margin:14px 0 0;">Each collection keeps its own assessment progress. Checks run locally and do not execute arbitrary code.</p>
+      </div>
+    </aside>
+
+    <div class="lab-main">
+      <div class="lab-main-head" id="assessment-workbench">
+        <div><div class="lab-label">Guided assessments</div><h2 id="section-title">Quantum Codebooks</h2></div>
+        <div class="exercise-position" id="exercise-position">Exercise 01 / 04</div>
+      </div>
+      <div id="exercise-root"></div>
+      <details class="catalog" id="source-catalog">
+        <summary>
+          <span class="catalog-summary-title"><span class="lab-label">Optional reference</span><strong id="catalog-title">Quantum Codebooks source library</strong></span>
+          <span class="catalog-summary-meta" id="catalog-summary">132 notebooks · Browse files &darr;</span>
+        </summary>
+        <div class="catalog-body">
+          <div class="catalog-head">
+            <p class="catalog-copy" id="catalog-copy"></p>
+            <a class="catalog-source" id="catalog-source" href="https://github.com/MonitSharma/Quantum-Codebooks" target="_blank" rel="noopener">Open repository &rarr;</a>
+          </div>
+          <div class="catalog-tools">
+            <input class="catalog-search" id="catalog-search" type="search" placeholder="Search this collection" aria-label="Search this collection">
+            <span class="catalog-status" id="catalog-status" aria-live="polite">Loading source catalog...</span>
+          </div>
+          <ol class="catalog-list" id="catalog-list"></ol>
+          <button class="action-btn secondary catalog-more" id="catalog-more" type="button" hidden>Show more</button>
+        </div>
+      </details>
+    </div>
+  </section>
+</main>
+
+<script>
+  const exercises = [
+    {
+      id: 'bell-state', domain: 'Quantum Codebooks', title: 'Create a Bell pair',
+      prompt: 'Complete the Qiskit circuit so qubits 0 and 1 are entangled and the final state is measured.',
+      target: 'A Hadamard on qubit 0, a CNOT from 0 to 1, and a measurement operation.',
+      visibleChecks: 2,
+      samples: [['Circuit width', 'QuantumCircuit(2)'], ['Entangling step', 'h(0) followed by cx(0, 1)']],
+      starter: 'from qiskit import QuantumCircuit\n\nqc = QuantumCircuit(2)\n# create entanglement and measure here\n',
+      hints: ['The first gate creates an equal superposition on qubit 0.', 'The controlled gate should use qubit 0 as control and qubit 1 as target.', 'Finish with measure_all() or an equivalent measurement call.'],
+      checks: [
+        ['Initializes two qubits', code => /QuantumCircuit\s*\(\s*2\s*\)/.test(code)],
+        ['Applies a Hadamard to qubit 0', code => /\bh\s*\(\s*0\s*\)/.test(code)],
+        ['Connects qubit 0 to qubit 1', code => /\bcx\s*\(\s*0\s*,\s*1\s*\)/.test(code)],
+        ['Measures the result', code => /measure_all\s*\(|\bmeasure\s*\(/.test(code)]
+      ]
+    },
+    {
+      id: 'qft', domain: 'Quantum Codebooks', title: 'Build a three-qubit QFT',
+      prompt: 'Write the circuit construction for a three-qubit quantum Fourier transform using Qiskit-style gates.',
+      target: 'Use three qubits, Hadamards, controlled phase rotations, and a final swap or equivalent QFT helper.',
+      visibleChecks: 2,
+      samples: [['Register', 'QuantumCircuit(3)'], ['Phase structure', 'Hadamard + controlled phase rotation']],
+      starter: 'from qiskit import QuantumCircuit\n\nqc = QuantumCircuit(3)\n# add the QFT structure here\n',
+      hints: ['The QFT starts with a Hadamard on the first qubit.', 'Controlled phase rotations can be expressed with cp(angle, control, target).', 'A swap between the outer qubits reverses the output order.'],
+      checks: [
+        ['Initializes three qubits', code => /QuantumCircuit\s*\(\s*3\s*\)/.test(code)],
+        ['Uses a Hadamard gate', code => /\bh\s*\(/.test(code)],
+        ['Uses a controlled phase rotation', code => /\bcp\s*\(|cu1\s*\(|qft/i.test(code)],
+        ['Reverses or measures the output', code => /\bswap\s*\(|measure_all\s*\(|\bmeasure\s*\(/.test(code)]
+      ]
+    },
+    {
+      id: 'cuda-vector-add', domain: 'LeetGPU', title: 'Index a vector-add kernel',
+      prompt: 'Complete the CUDA kernel so each thread computes one valid element of c = a + b.',
+      target: 'Compute a global thread index and guard the write with an i < n bound check.',
+      visibleChecks: 2,
+      samples: [['Input', 'a = [1, 2], b = [3, 4]'], ['Expected output', 'c = [4, 6]']],
+      starter: '__global__ void vector_add(const float* a, const float* b, float* c, int n) {\n  // compute the global index\n  // guard the write and add a[i] + b[i]\n}\n',
+      hints: ['The global index combines blockIdx.x, blockDim.x, and threadIdx.x.', 'Threads beyond n must return without writing.', 'The assignment should read from both input arrays.'],
+      checks: [
+        ['Declares a CUDA kernel', code => /__global__\s+void/.test(code)],
+        ['Uses a global thread index', code => /blockIdx\.x[\s\S]*blockDim\.x[\s\S]*threadIdx\.x|threadIdx\.x[\s\S]*blockDim\.x[\s\S]*blockIdx\.x/.test(code)],
+        ['Guards the array access', code => /if\s*\([^)]*\bi\b[^)]*(<|<=)[^)]*n/.test(code)],
+        ['Adds the two input vectors', code => /c\s*\[[^\]]+\]\s*=\s*a\s*\[[^\]]+\]\s*\+\s*b\s*\[[^\]]+\]/.test(code)]
+      ]
+    },
+    {
+      id: 'cuda-relu', domain: 'LeetGPU', title: 'Write a ReLU kernel',
+      prompt: 'Implement the elementwise ReLU operation in a CUDA kernel: output max(0, input) for every valid index.',
+      target: 'Use the CUDA thread index pattern, a bounds guard, and a non-negative output expression.',
+      visibleChecks: 2,
+      samples: [['Input', 'x = [-2.0, 0.5, 3.0]'], ['Expected output', 'y = [0.0, 0.5, 3.0]']],
+      starter: '__global__ void relu(const float* x, float* y, int n) {\n  // find the index\n  // write max(0, x[i]) for valid i\n}\n',
+      hints: ['Reuse the standard one-dimensional CUDA indexing pattern.', 'The output must never be negative.', 'fmaxf(0.0f, x[i]) and a conditional expression are both acceptable.'],
+      checks: [
+        ['Declares a CUDA kernel', code => /__global__\s+void/.test(code)],
+        ['Computes a thread index', code => /blockIdx\.x[\s\S]*blockDim\.x[\s\S]*threadIdx\.x/.test(code)],
+        ['Guards the index', code => /if\s*\([^)]*\bi\b[^)]*(<|<=)[^)]*n/.test(code)],
+        ['Clamps negative values', code => /fmaxf\s*\(|max\s*\(|0\.0f\s*,|0\.0\s*\)|\?\s*0\s*:/.test(code)]
+      ]
+    },
+    {
+      id: 'two-sum', domain: 'LeetCode', title: 'Solve Two Sum in one pass',
+      prompt: 'Complete a linear-time solution that returns the indices of two values adding to target.',
+      target: 'Use a dictionary of previously seen values and return the matching pair of indices.',
+      visibleChecks: 3,
+      samples: [['Input', 'nums = [2, 7, 11, 15], target = 9'], ['Expected output', '[0, 1]']],
+      starter: 'def two_sum(nums, target):\n    seen = {}\n    # scan nums once and return the matching indices\n',
+      hints: ['Iterate with enumerate so you have both index and value.', 'Look up target - value before storing the current value.', 'Store value -> index in seen.'],
+      checks: [
+        ['Defines the function', code => /def\s+two_sum\s*\(/.test(code)],
+        ['Uses a lookup map', code => /seen\s*=\s*\{\}|dict\s*\(|hashmap|lookup/i.test(code)],
+        ['Scans with indices', code => /enumerate\s*\(/.test(code)],
+        ['Looks up the complement', code => /target\s*-\s*\w+|\w+\s*-\s*target/.test(code)],
+        ['Returns two indices', code => /return\s+\[?\s*[^\n,]+\s*,\s*[^\n\]]+\]?/.test(code)]
+      ]
+    },
+    {
+      id: 'prefix-max', domain: 'LeetCode', title: 'Track a running maximum',
+      prompt: 'Implement a single-pass function that returns the running maximum after each value in nums.',
+      target: 'Keep one running maximum, append it at every step, and return the output list.',
+      visibleChecks: 3,
+      samples: [['Input', 'nums = [2, 1, 5, 3]'], ['Expected output', '[2, 2, 5, 5]']],
+      starter: 'def running_max(nums):\n    result = []\n    # keep the largest value seen so far\n    return result\n',
+      hints: ['Initialize a value that can be compared with the first element.', 'Loop through nums and update the maximum when the current value is larger.', 'Append the current maximum on every iteration.'],
+      checks: [
+        ['Defines the function', code => /def\s+running_max\s*\(/.test(code)],
+        ['Creates an output list', code => /result\s*=\s*\[\]|output\s*=\s*\[\]/.test(code)],
+        ['Loops over the input', code => /for\s+\w+\s+in\s+nums/.test(code)],
+        ['Updates a maximum', code => /max\s*\(|>\s*(?:max_value|current|value|num)|if\s+/.test(code)],
+        ['Appends and returns results', code => /\.append\s*\(/.test(code) && /return\s+(result|output)/.test(code)]
+      ]
+    },
+    {
+      id: 'superposition', domain: 'Quantum Codebooks', title: 'Prepare and measure superposition',
+      prompt: 'Prepare a single qubit in an equal superposition, then measure it in the computational basis.',
+      target: 'Create one qubit, apply H to it, and include a measurement operation.',
+      visibleChecks: 2,
+      samples: [['Initial state', '|0>'], ['Expected probabilities', 'P(0) = 0.5, P(1) = 0.5']],
+      starter: 'from qiskit import QuantumCircuit\n\nqc = QuantumCircuit(1)\n# prepare and measure the qubit\n',
+      hints: ['The equal superposition is created with a Hadamard gate.', 'The circuit only needs one qubit for this exercise.', 'Measure in the computational basis after applying H.'],
+      checks: [
+        ['Initializes one qubit', code => /QuantumCircuit\s*\(\s*1\s*\)/.test(code)],
+        ['Applies a Hadamard gate', code => /\bh\s*\(\s*0\s*\)/.test(code)],
+        ['Measures the qubit', code => /measure_all\s*\(|\bmeasure\s*\(/.test(code)],
+        ['Keeps the circuit compact', code => code.split('\n').filter(line => line.trim() && !line.trim().startsWith('#')).length <= 8]
+      ]
+    },
+    {
+      id: 'phase-kickback', domain: 'Quantum Codebooks', title: 'Trace phase kickback',
+      prompt: 'Set up the two-qubit scaffold used to demonstrate phase kickback with a controlled-X operation.',
+      target: 'Prepare the control and target, apply H gates around the controlled operation, and measure.',
+      visibleChecks: 2,
+      samples: [['Register', '2 qubits'], ['Core operation', 'cx(0, 1) between basis changes']],
+      starter: 'from qiskit import QuantumCircuit\n\nqc = QuantumCircuit(2)\n# prepare the target and build the phase-kickback scaffold\n',
+      hints: ['The target is prepared in |1> before the controlled operation.', 'Use H gates to move between the computational and phase bases.', 'Keep qubit 0 as control and qubit 1 as target.'],
+      checks: [
+        ['Initializes two qubits', code => /QuantumCircuit\s*\(\s*2\s*\)/.test(code)],
+        ['Prepares the target qubit', code => /x\s*\(\s*1\s*\)/.test(code)],
+        ['Uses the controlled-X gate', code => /cx\s*\(\s*0\s*,\s*1\s*\)/.test(code)],
+        ['Uses phase-basis changes', code => (code.match(/\bh\s*\(/g) || []).length >= 2]
+      ]
+    },
+    {
+      id: 'cuda-matmul-index', domain: 'LeetGPU', title: 'Map threads to a matrix',
+      prompt: 'Complete the 2D CUDA indexing for a matrix kernel that writes one output element per thread.',
+      target: 'Derive row and column from block and thread coordinates, then guard both dimensions.',
+      visibleChecks: 2,
+      samples: [['Grid shape', 'rows = 4, cols = 8'], ['Expected mapping', 'row = blockIdx.y * blockDim.y + threadIdx.y']],
+      starter: '__global__ void matrix_op(const float* a, float* out, int rows, int cols) {\n  // derive row and col from the 2D grid\n  // write one valid output element\n}\n',
+      hints: ['Use .x for columns and .y for rows.', 'Each coordinate combines blockIdx, blockDim, and threadIdx.', 'The guard must prevent both row and col from exceeding the matrix shape.'],
+      checks: [
+        ['Declares a CUDA kernel', code => /__global__\s+void/.test(code)],
+        ['Uses 2D thread coordinates', code => /blockIdx\.y[\s\S]*blockDim\.y[\s\S]*threadIdx\.y/.test(code) && /blockIdx\.x[\s\S]*blockDim\.x[\s\S]*threadIdx\.x/.test(code)],
+        ['Guards rows and columns', code => /rows[\s\S]*cols|cols[\s\S]*rows/.test(code) && /if\s*\(/.test(code)],
+        ['Writes an output element', code => /out\s*\[/.test(code)]
+      ]
+    },
+    {
+      id: 'cuda-shared-tile', domain: 'LeetGPU', title: 'Stage a shared-memory tile',
+      prompt: 'Sketch the synchronization structure for a tiled matrix multiplication kernel.',
+      target: 'Declare shared memory for tiles, load from global memory, synchronize, then compute.',
+      visibleChecks: 2,
+      samples: [['Memory space', '__shared__ tile'], ['Synchronization', '__syncthreads() after loads']],
+      starter: '__global__ void tiled_matmul(const float* a, const float* b, float* c) {\n  // declare tiles and load one value per thread\n  // synchronize before using shared values\n}\n',
+      hints: ['Shared arrays are declared with the __shared__ qualifier.', 'Both tiles need to be synchronized before the multiply-accumulate loop.', 'The barrier is written __syncthreads().'],
+      checks: [
+        ['Declares a CUDA kernel', code => /__global__\s+void/.test(code)],
+        ['Uses shared memory', code => /__shared__/.test(code)],
+        ['Synchronizes the block', code => /__syncthreads\s*\(\s*\)/.test(code)],
+        ['Uses block-level indexing', code => /threadIdx\.[xy]/.test(code) && /blockIdx\.[xy]/.test(code)]
+      ]
+    },
+    {
+      id: 'valid-parentheses', domain: 'LeetCode', title: 'Validate nested brackets',
+      prompt: 'Implement a stack-based validator for strings containing (), [], and {} brackets.',
+      target: 'Push opening brackets, match each closer with the stack top, and accept only an empty stack.',
+      visibleChecks: 3,
+      samples: [['Input', 's = "({[]})"'], ['Expected output', 'True']],
+      starter: 'def is_valid(s):\n    stack = []\n    # scan the string and validate matching brackets\n',
+      hints: ['A dictionary can map each closing bracket to its opening partner.', 'A closing bracket is invalid when the stack is empty or mismatched.', 'Return true only when the stack is empty at the end.'],
+      checks: [
+        ['Defines the validator', code => /def\s+is_valid\s*\(/.test(code)],
+        ['Uses a stack', code => /stack\s*=\s*\[\]|stack\.append|stack\.pop/.test(code)],
+        ['Scans each character', code => /for\s+\w+\s+in\s+s/.test(code)],
+        ['Matches closing brackets', code => /\{\s*\}|\[\s*\]|\(\s*\)|mapping|pairs|close|open/i.test(code)],
+        ['Checks the final stack', code => /return\s+(not\s+stack|stack\s*==\s*\[\]|len\s*\(\s*stack\s*\)\s*==\s*0)/.test(code)]
+      ]
+    },
+    {
+      id: 'number-of-islands', domain: 'LeetCode', title: 'Count connected islands',
+      prompt: 'Count groups of connected 1s in a 2D grid using DFS or BFS.',
+      target: 'Visit each cell once, mark a discovered island, and return the number of components.',
+      visibleChecks: 3,
+      samples: [['Input', 'grid = [[1,1,0],[0,1,0],[0,0,1]]'], ['Expected output', '2']],
+      hints: ['Start a search whenever you find an unvisited land cell.', 'A search should visit the four neighboring cells recursively or with a queue.', 'Mark cells as visited so each island is counted once.'],
+      checks: [
+        ['Defines a grid function', code => /def\s+\w+\s*\([^)]*grid/.test(code)],
+        ['Traverses rows and columns', code => /for\s+.*in\s+grid|range\s*\(.*len\s*\(\s*grid/.test(code)],
+        ['Uses DFS or BFS', code => /dfs|bfs|queue|deque|stack|recursive|visit/i.test(code)],
+        ['Tracks visited cells', code => /visited|seen|grid\s*\[.*\]\s*=\s*0/.test(code)],
+        ['Returns an island count', code => /count|islands|return\s+\w+/.test(code)]
+      ]
+    }
+  ];
+
+  const collections = [
+    {
+      value: 'Quantum Codebooks',
+      inventory: '132 notebooks',
+      repo: 'MonitSharma/Quantum-Codebooks',
+      itemSingular: 'notebook',
+      itemLabel: 'notebooks',
+      copy: 'PennyLane codebook solutions, QuTiP demonstrations, circuits, pulse-level simulation, visualizations, and quantum-mechanics notebooks.',
+      accepts: item => item.type === 'blob' && item.path.toLowerCase().endsWith('.ipynb')
+    },
+    {
+      value: 'LeetCode',
+      inventory: '552+ problems',
+      repo: 'MonitSharma/LeetCode-Solutions',
+      itemSingular: 'solution folder',
+      itemLabel: 'solution folders',
+      copy: 'Algorithm solutions across Python, C, C++, Java, JavaScript, Rust, and SQL. The collection reports 552+ solved problems; this reference browser loads every current top-level solution folder.',
+      accepts: item => item.type === 'tree' && !item.path.includes('/') && !item.path.startsWith('.')
+    },
+    {
+      value: 'LeetGPU',
+      inventory: '5 kernels',
+      repo: 'MonitSharma/LeetGPU-Solutions',
+      itemSingular: 'CUDA kernel',
+      itemLabel: 'CUDA kernels',
+      copy: 'CUDA implementations for vector operations, image transforms, matrix operations, and tiled multiplication.',
+      accepts: item => item.type === 'blob' && item.path.toLowerCase().endsWith('.cu')
+    }
+  ];
+  const storageKey = 'quantum-classroom-practice-progress-v1';
+  let progress = {};
+  try { progress = JSON.parse(localStorage.getItem(storageKey) || '{}') || {}; } catch (error) { progress = {}; }
+  let activeFilter = collections[0].value;
+  let currentId = exercises[0].id;
+  let hintIndex = 0;
+  let lastChecks = null;
+  let lastMode = null;
+  let catalogQuery = '';
+  let catalogLimit = 24;
+  const catalogCache = {};
+
+  const escapeHtml = value => value.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+  const activeCollection = () => collections.find(collection => collection.value === activeFilter);
+  const visibleExercises = () => exercises.filter(exercise => exercise.domain === activeFilter);
+  const currentExercise = () => exercises.find(exercise => exercise.id === currentId) || visibleExercises()[0];
+  const encodePath = path => path.split('/').map(encodeURIComponent).join('/');
+  const catalogName = path => path.replace(/\.ipynb$|\.cu$/i, '').replace(/[_-]+/g, ' ').replaceAll('/', ' / ');
+
+  function saveProgress() { try { localStorage.setItem(storageKey, JSON.stringify(progress)); } catch (error) {} }
+  function scrollToAssessment() {
+    requestAnimationFrame(() => {
+      const target = document.getElementById('assessment-workbench');
+      const headerHeight = document.querySelector('.topbar').getBoundingClientRect().height;
+      const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    });
+  }
+  function renderFilters() {
+    const root = document.getElementById('filters');
+    root.innerHTML = collections.map(collection => {
+      return `<button class="filter-btn${activeFilter === collection.value ? ' active' : ''}" data-filter="${collection.value}"><span>${collection.value}</span><span class="filter-count">${collection.inventory}</span></button>`;
+    }).join('');
+    root.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
+      activeFilter = button.dataset.filter;
+      const next = visibleExercises();
+      if (!next.some(exercise => exercise.id === currentId)) currentId = next[0].id;
+      hintIndex = 0; lastChecks = null; lastMode = null; catalogQuery = ''; catalogLimit = 24;
+      document.getElementById('catalog-search').value = '';
+      document.getElementById('source-catalog').open = false;
+      render();
+      renderCatalog();
+      scrollToAssessment();
+    }));
+  }
+  function renderProgress() {
+    const list = visibleExercises();
+    const completed = list.filter(exercise => progress[exercise.id]).length;
+    document.getElementById('progress-text').textContent = `${completed} / ${list.length}`;
+    document.getElementById('progress-bar').style.width = `${completed / list.length * 100}%`;
+  }
+  function renderCatalogItems() {
+    const collection = activeCollection();
+    const items = catalogCache[collection.value] || [];
+    const query = catalogQuery.trim().toLowerCase();
+    const filtered = query ? items.filter(item => catalogName(item.path).toLowerCase().includes(query)) : items;
+    const visible = filtered.slice(0, catalogLimit);
+    document.getElementById('catalog-list').innerHTML = visible.map((item, index) => {
+      const kind = item.type === 'tree' ? 'tree' : 'blob';
+      const href = `https://github.com/${collection.repo}/${kind}/main/${encodePath(item.path)}`;
+      return `<li><a href="${href}" target="_blank" rel="noopener"><span class="catalog-index">${String(index + 1).padStart(3, '0')}</span><span class="catalog-name">${escapeHtml(catalogName(item.path))}</span></a></li>`;
+    }).join('');
+    const status = document.getElementById('catalog-status');
+    const itemLabel = filtered.length === 1 ? collection.itemSingular : collection.itemLabel;
+    status.textContent = items.length ? `${filtered.length} ${itemLabel}${query ? ' found' : ' loaded'}` : 'No source items found';
+    const more = document.getElementById('catalog-more');
+    more.hidden = visible.length >= filtered.length;
+    more.textContent = `Show ${Math.min(24, filtered.length - visible.length)} more`;
+  }
+  async function renderCatalog() {
+    const collection = activeCollection();
+    const requestedCollection = collection.value;
+    document.getElementById('catalog-title').textContent = `${collection.value} source library`;
+    document.getElementById('catalog-summary').textContent = `${collection.inventory} · Browse files ↓`;
+    document.getElementById('catalog-copy').textContent = collection.copy;
+    document.getElementById('catalog-source').href = `https://github.com/${collection.repo}`;
+    document.getElementById('catalog-status').textContent = 'Loading source catalog...';
+    document.getElementById('catalog-list').innerHTML = '';
+    document.getElementById('catalog-more').hidden = true;
+    if (!catalogCache[collection.value]) {
+      try {
+        const response = await fetch(`https://api.github.com/repos/${collection.repo}/git/trees/main?recursive=1`, { headers: { Accept: 'application/vnd.github+json' } });
+        if (!response.ok) throw new Error(`GitHub returned ${response.status}`);
+        const data = await response.json();
+        catalogCache[collection.value] = (data.tree || []).filter(collection.accepts).sort((a, b) => a.path.localeCompare(b.path, undefined, { numeric: true }));
+      } catch (error) {
+        if (activeFilter === requestedCollection) {
+          document.getElementById('catalog-status').textContent = 'Catalog unavailable - open the repository';
+          document.getElementById('catalog-list').innerHTML = '';
+        }
+        return;
+      }
+    }
+    if (activeFilter === requestedCollection) renderCatalogItems();
+  }
+  function render() {
+    const exercise = currentExercise();
+    const list = visibleExercises();
+    const position = list.findIndex(item => item.id === exercise.id) + 1;
+    document.getElementById('section-title').textContent = activeFilter;
+    document.getElementById('exercise-position').textContent = `Exercise ${String(position).padStart(2, '0')} / ${String(list.length).padStart(2, '0')}`;
+    const done = Boolean(progress[exercise.id]);
+    const attempts = Number(progress[`${exercise.id}:attempts`] || 0);
+    const savedStatus = progress[`${exercise.id}:lastStatus`] || 'not-submitted';
+    const savedStatusClass = savedStatus === 'passed' ? 'pass' : savedStatus === 'needs-work' ? 'fail' : '';
+    const savedStatusLabel = savedStatus === 'passed' ? 'Assessment passed' : savedStatus === 'needs-work' ? 'Needs another pass' : 'Not submitted';
+    const checkCount = Math.min(exercise.visibleChecks || 2, exercise.checks.length);
+    const shownChecks = lastMode === 'sample' ? exercise.checks.slice(0, checkCount) : exercise.checks;
+    const results = lastChecks ? `<div class="results"><div class="results-head"><h3>${lastMode === 'sample' ? 'Sample feedback' : 'Submission feedback'}</h3><span class="result-summary ${lastChecks.every(Boolean) ? 'pass' : 'fail'}">${lastMode === 'sample' ? `${lastChecks.filter(Boolean).length} / ${lastChecks.length} sample checks` : (lastChecks.every(Boolean) ? 'Assessment passed' : `${lastChecks.filter(Boolean).length} / ${lastChecks.length} checks passed`)}</span></div><div class="test-list">${shownChecks.map(([label], index) => `<div class="test-item ${lastChecks[index] ? 'pass' : 'fail'}"><span class="test-icon">${lastChecks[index] ? '&#10003;' : '&#215;'}</span><span class="test-name">${label}</span><span class="test-label">${lastChecks[index] ? 'pass' : lastMode === 'sample' ? 'try again' : 'edge case'}</span></div>`).join('')}</div>${lastMode === 'submit' ? `<p style="color:var(--ink-3);font-size:11px;line-height:1.5;margin-top:14px;">The full assessment includes ${exercise.checks.length - checkCount} additional structural checks beyond the visible samples.</p>` : ''}</div>` : '';
+    const hint = hintIndex ? `<div class="hint-box visible"><strong>Hint ${hintIndex}</strong> &nbsp; ${escapeHtml(exercise.hints[hintIndex - 1])}</div>` : '';
+    const samples = (exercise.samples || []).map(([label, value]) => `<div class="sample-case"><span class="case-label">${label}</span><code>${escapeHtml(value)}</code></div>`).join('');
+    document.getElementById('exercise-root').innerHTML = `<article class="exercise-card"><div class="exercise-top"><div><div class="exercise-domain">${exercise.domain}</div><h3 class="exercise-title">${exercise.title}</h3><p class="exercise-prompt">${exercise.prompt}</p></div><div class="complete-mark${done ? ' done' : ''}">${done ? '&#10003; Completed' : 'Open'}</div></div><div class="target-strip"><strong>Expected outcome</strong>${exercise.target}</div><div class="notebook"><div class="cell"><div class="cell-head"><span class="cell-meta">In [01] &nbsp; notebook cell</span><span class="cell-status" id="cell-status" aria-live="polite">${lastMode ? lastMode === 'sample' ? 'Samples checked' : 'Assessment submitted' : 'Ready to check'}</span></div><textarea id="code-input" spellcheck="false" aria-label="Code for ${exercise.title}">${escapeHtml(progress[`${exercise.id}:code`] ?? exercise.starter)}</textarea></div><div class="assessment-panel"><div class="assessment-head"><h3>Assessment</h3><span class="assessment-meta">${attempts} submission${attempts === 1 ? '' : 's'}</span></div><p class="assessment-copy">Run the visible examples while you work. Submit when ready for the complete assessment suite, including edge-case structure checks.</p><div class="sample-cases">${samples}</div><div class="assessment-actions"><button class="action-btn" id="check-btn">&#9654; Run sample tests</button><button class="action-btn secondary" id="submit-btn">Submit assessment</button><span class="assessment-status ${savedStatusClass}">${savedStatusLabel}</span></div></div><div class="cell-actions"><button class="action-btn secondary" id="reset-btn">Reset cell</button><button class="action-btn secondary" id="hint-btn">Show hint</button><span class="hint-count" id="hint-count">${hintIndex} / ${exercise.hints.length} hints used</span></div>${hint}<div id="results-root" aria-live="polite">${results}</div><div class="next-row"><button class="action-btn secondary" id="next-btn">Next exercise &rarr;</button></div></div></article>`;
+    document.getElementById('code-input').addEventListener('input', event => { progress[`${exercise.id}:code`] = event.target.value; saveProgress(); });
+    document.getElementById('check-btn').addEventListener('click', () => runChecks(exercise, 'sample'));
+    document.getElementById('submit-btn').addEventListener('click', () => runChecks(exercise, 'submit'));
+    document.getElementById('reset-btn').addEventListener('click', () => { delete progress[`${exercise.id}:code`]; delete progress[exercise.id]; delete progress[`${exercise.id}:attempts`]; delete progress[`${exercise.id}:lastStatus`]; hintIndex = 0; lastChecks = null; lastMode = null; saveProgress(); render(); });
+    document.getElementById('hint-btn').addEventListener('click', () => { if (hintIndex < exercise.hints.length) hintIndex += 1; render(); });
+    document.getElementById('next-btn').addEventListener('click', () => { const next = visibleExercises(); const nextIndex = (next.findIndex(item => item.id === exercise.id) + 1) % next.length; currentId = next[nextIndex].id; hintIndex = 0; lastChecks = null; lastMode = null; document.getElementById('source-catalog').open = false; render(); scrollToAssessment(); });
+    renderFilters(); renderProgress();
+  }
+  function runChecks(exercise, mode) {
+    const code = document.getElementById('code-input').value;
+    const checkCount = Math.min(exercise.visibleChecks || 2, exercise.checks.length);
+    const checksToRun = mode === 'sample' ? exercise.checks.slice(0, checkCount) : exercise.checks;
+    lastChecks = checksToRun.map(([, test]) => test(code));
+    lastMode = mode;
+    if (mode === 'submit') {
+      progress[`${exercise.id}:attempts`] = Number(progress[`${exercise.id}:attempts`] || 0) + 1;
+      progress[`${exercise.id}:lastStatus`] = lastChecks.every(Boolean) ? 'passed' : 'needs-work';
+      if (lastChecks.every(Boolean)) progress[exercise.id] = true;
+    }
+    saveProgress();
+    render();
+    const status = document.getElementById('cell-status');
+    status.textContent = mode === 'sample' ? (lastChecks.every(Boolean) ? 'Samples passed' : 'Samples need work') : (lastChecks.every(Boolean) ? 'Assessment passed' : 'Assessment needs work');
+    status.classList.add(lastChecks.every(Boolean) ? 'pass' : 'fail');
+  }
+  document.getElementById('catalog-search').addEventListener('input', event => {
+    catalogQuery = event.target.value;
+    catalogLimit = 24;
+    renderCatalogItems();
+  });
+  document.getElementById('catalog-more').addEventListener('click', () => {
+    catalogLimit += 24;
+    renderCatalogItems();
+  });
+  render();
+  renderCatalog();
+</script>
+</body>
+</html>
