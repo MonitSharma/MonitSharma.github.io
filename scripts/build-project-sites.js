@@ -52,11 +52,11 @@ const profiles = {
     titleOverrides: { 'README.md': 'Course overview', 'jupyter_notebooks/Getting_Started_with_Qiskit.ipynb': 'Getting started with Qiskit', "jupyter_notebooks/Hello Quantum World.ipynb": 'Hello, quantum world', "jupyter_notebooks/Hello Entangled World.ipynb": 'Entanglement in action', 'jupyter_notebooks/Circuit_Basics.ipynb': 'Circuit basics', "jupyter_notebooks/Grover's_Algoroithm.ipynb": "Grover's algorithm", 'jupyter_notebooks/Quantum Fourier Transfom.ipynb': 'Quantum Fourier transform', 'jupyter_notebooks/Quantum Phase Estimation.ipynb': 'Quantum phase estimation', "jupyter_notebooks/Shor's_Algorithm.ipynb": "Shor's algorithm", 'jupyter_notebooks/The CHSH game.ipynb': 'The CHSH game' }
   },
   'Learn-Quantum-Computing-For-Free': { groupOrder: ['Root guide'], groupLabels: { 'Root guide': 'Learning map' }, titleOverrides: { 'README.md': 'Quantum learning map' } },
-  'Learn-Quantum-Computing-with-Qiskit': { groupOrder: ['Root guide', 'gifs'], groupLabels: { 'Root guide': 'Course lessons', gifs: 'Visuals' }, titleOverrides: { 'README.md': 'Course roadmap' } },
+  'Learn-Quantum-Computing-with-Qiskit': { groupOrder: ['Prerequisites', 'Quantum States and Qubits', 'Multiple Qubits and Entanglement', 'Quantum Protocols and Quantum Algorithms', 'Supplementary lessons', 'gifs'], groupLabels: { 'Prerequisites': 'Prerequisites', 'Quantum States and Qubits': 'Quantum states and qubits', 'Multiple Qubits and Entanglement': 'Multiple qubits and entanglement', 'Quantum Protocols and Quantum Algorithms': 'Quantum protocols and algorithms', 'Supplementary lessons': 'Additional lessons', gifs: 'Visuals' }, titleOverrides: { 'README.md': 'Course roadmap' } },
   'Learn-Quantum-Machine-Learning': { groupOrder: ['Root guide'], groupLabels: { 'Root guide': 'Course lessons' }, titleOverrides: { 'README.md': 'QML course roadmap' } },
   'Nielsen-Chuang-Solutions': { groupOrder: ['Root guide', 'Chapter 1', 'Chapter 2', 'Chapter 3', 'Chapter 4', 'Chapter 5', 'Chapter 6', 'Chapter 7', 'Chapter 8', 'Chapter 9', 'Chapter 10', 'Chapter 11', 'Chapter 12'], groupLabels: { 'Root guide': 'Book and complete solutions', 'Chapter 1': 'Chapter 1 solutions', 'Chapter 2': 'Chapter 2 solutions', 'Chapter 3': 'Chapter 3 solutions', 'Chapter 4': 'Chapter 4 solutions', 'Chapter 5': 'Chapter 5 solutions', 'Chapter 6': 'Chapter 6 solutions', 'Chapter 7': 'Chapter 7 solutions', 'Chapter 8': 'Chapter 8 solutions', 'Chapter 9': 'Chapter 9 solutions', 'Chapter 10': 'Chapter 10 solutions', 'Chapter 11': 'Chapter 11 solutions', 'Chapter 12': 'Chapter 12 solutions' }, titleOverrides: { 'README.md': 'Book and solution guide', 'main.tex': 'Solution manual · LaTeX source' } },
-  'Qiskit-Summer-School-and-Quantum-Challenges': { groupOrder: ['Root guide', 'IBM Quantum Summer School 2020', 'IBM Quantum Summer School 2021', 'IBM Quantum Summer School 2022', 'IBM Quantum Summer School 2023', 'IBM Quantum Summer School 2024', 'IBM Quantum Challenge Fall 2020', 'IBM Quantum Challenge Spring 2021', 'IBM Quantum Challenge Spring 2022', 'IBM Quantum Challenge Spring 2023', 'IBM Quantum Challenge Fall 2021', 'IBM Quantum Challenge Fall 2022', 'IBM Quantum Challenge 2024', 'IBM Quantum Challenge Africa 2021', 'IBM Quantum Open Science Prize 2021'], groupLabels: { 'Root guide': 'Challenge guide' }, titleOverrides: { 'README.md': 'Challenge roadmap' } },
-  'Quantum-Codebooks': { groupOrder: ['Root guide', 'Qiskit Textbook', 'Microsoft Q# Codebook', 'QuTiP Codebooks', 'Xanadu Quantum Codebook', 'Xanadu-Codebook-Solutions'], groupLabels: { 'Root guide': 'Codebook guide', 'Microsoft Q# Codebook': 'Q# fundamentals and algorithms', 'Xanadu-Codebook-Solutions': 'Xanadu solutions' }, titleOverrides: { 'README.md': 'Codebook roadmap' } },
+  'Qiskit-Summer-School-and-Quantum-Challenges': { groupOrder: ['Root guide', 'IBM Quantum Summer School 2020', 'IBM Quantum Summer School 2021', 'IBM Quantum Summer School 2022', 'IBM Quantum Summer School 2023', 'IBM Quantum Summer School 2024', 'IBM Quantum Challenge Fall 2020', 'IBM Quantum Challenge Fall 2021', 'IBM Quantum Challenge Fall 2022', 'IBM Quantum Challenge Spring 2021', 'IBM Quantum Challenge Spring 2022', 'IBM Quantum Challenge Spring 2023', 'IBM Quantum Challenge 2024', 'IBM Quantum Challenge Africa 2021', 'IBM Quantum Open Science Prize 2021'], groupLabels: { 'Root guide': 'Challenge guide' }, titleOverrides: { 'README.md': 'Challenge roadmap' } },
+  'Quantum-Codebooks': { groupOrder: ['Root guide', 'Qiskit Textbook', 'Microsoft Q# Codebook', 'QuTiP Codebooks', 'Xanadu Quantum Codebook', 'Xanadu-Codebook-Solutions'], groupLabels: { 'Root guide': 'Codebook guide', 'Microsoft Q# Codebook': 'Q# fundamentals and algorithms', 'QuTiP Codebooks': 'QuTiP codebooks', 'Xanadu-Codebook-Solutions': 'Xanadu solutions' }, titleOverrides: { 'README.md': 'Codebook roadmap' } },
   'Quantum-Finance-and-Numerical-Methods': { groupOrder: ['Root guide', 'Introduction to Finance with Python', 'Classical Use Cases', 'JP Morgan Python Training', 'Machine Learning For Finance', 'Quantum Finance', 'Quantum Machine Learning in Finance', 'Quantum Use Cases'], groupLabels: { 'Root guide': 'Finance lab guide' }, titleOverrides: { 'README.md': 'Finance lab roadmap' } },
   'Quantum-Machine-Learning-on-Near-Term-Quantum-Devices': { groupOrder: ['Root guide', 'Higgs_Classification', 'QCNN for Disease Detection', 'Quantum Convolutinal with Data Re-Uploadation', 'Quantum Convolutional Neural Networks', 'Quantum Support Vector Machine on QCD', 'Galaxy Detection using Quantum Machine Learning'], groupLabels: { 'Root guide': 'Project guide', 'Galaxy Detection using Quantum Machine Learning': 'Galaxy classification study' }, titleOverrides: { 'README.md': 'NISQ QML project guide', 'Quantum_Machine_Learning.pdf': 'Project report' } },
   'parallel_adventures': { groupOrder: ['Root guide', 'C', 'cuda_kernels', 'JAX', 'LeetGPU', 'PyTorch', 'images'], groupLabels: { 'Root guide': 'Systems roadmap', C: 'C and C++ foundations', cuda_kernels: 'CUDA kernels', JAX: 'JAX experiments', LeetGPU: 'GPU problem solving', PyTorch: 'PyTorch experiments', images: 'Visual references' }, titleOverrides: { 'README.md': 'Parallel programming roadmap' } },
@@ -91,6 +91,33 @@ const humanize = (value) => {
 };
 const collectionId = (value) => `module-${String(value).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'root'}`;
 const profileFor = (slug) => profiles[slug] || {};
+
+const fullReadmeSlugs = new Set([
+  'Learn-Quantum-Computing-with-Qiskit',
+  'Qiskit-Summer-School-and-Quantum-Challenges',
+  'Quantum-Codebooks'
+]);
+
+const qiskitLessonGroups = {
+  'Installing Qiskit and Dependancies.ipynb': 'Prerequisites',
+  'Complex Arithmetic.ipynb': 'Prerequisites',
+  'Linear Algebra Background.ipynb': 'Prerequisites',
+  'Atoms_of_Computation.ipynb': 'Quantum States and Qubits',
+  'Represenitng_Qubit_States.ipynb': 'Quantum States and Qubits',
+  'Single_Qubit_Gates.ipynb': 'Quantum States and Qubits',
+  'Multiple_Qubits_and_Entanglement.ipynb': 'Multiple Qubits and Entanglement',
+  'Phase_Kickback.ipynb': 'Multiple Qubits and Entanglement',
+  'Basic_Circuit_Identities.ipynb': 'Multiple Qubits and Entanglement',
+  'Proving_Universality.ipynb': 'Multiple Qubits and Entanglement',
+  'Classical_Computation_on_a_Quantum_Computer.ipynb': 'Multiple Qubits and Entanglement',
+  'Quantum_Circuits.ipynb': 'Quantum Protocols and Quantum Algorithms',
+  'Deutsch_Jozsa_Algorithm.ipynb': 'Quantum Protocols and Quantum Algorithms',
+  'Bernstein_Vazirani_Algorithm.ipynb': 'Quantum Protocols and Quantum Algorithms',
+  'Simons_Algorithm.ipynb': 'Quantum Protocols and Quantum Algorithms',
+  'Quantum_Fourier_Transform.ipynb': 'Quantum Protocols and Quantum Algorithms',
+  'Quantum_Phase_Estimatoin.ipynb': 'Quantum Protocols and Quantum Algorithms',
+  'The_Case_for_Quantum_Computers.ipynb': 'Supplementary lessons'
+};
 
 function groupLabel(name, slug) {
   const profile = profileFor(slug);
@@ -210,16 +237,27 @@ function readmeMarkup(file, className = 'project-readme') {
   return `<section class="${className}" aria-label="Project notes"><div class="readme-label">${className === 'project-readme' ? 'About this project' : 'Section notes'}</div><div class="readme-copy">${blocks.slice(0, 5).join('')}</div></section>`;
 }
 
-function fullReadmeMarkup(file) {
+function fullReadmeMarkup(file, options = {}) {
   if (file && fs.statSync(file).isDirectory()) file = readmeFile(file);
   if (!file) return '';
+  const compact = Boolean(options.compact);
+  const omitHeadings = new Set((options.omitHeadings || []).map((heading) => String(heading).toLowerCase()));
+  const omitParagraphs = options.omitParagraphs || [];
   const lines = fs.readFileSync(file, 'utf8').split(/\r?\n/);
   const blocks = [];
   let paragraph = [];
   let list = [];
   const flushParagraph = () => {
     const value = paragraph.join(' ').replace(/\s+/g, ' ').trim();
-    if (value) blocks.push(`<p>${inlineReadme(value)}</p>`);
+    if (value) {
+      if (compact && omitParagraphs.some((pattern) => pattern.test(value))) {
+        paragraph = [];
+        return;
+      }
+      const sentences = value.match(/[^.!?]+[.!?]+(?:\s|$)/g) || [value];
+      const summary = compact && value.length > 320 ? sentences.slice(0, 2).join(' ').trim().slice(0, 320).replace(/\s+[^\s]*$/, '') + '…' : value;
+      blocks.push(`<p>${inlineReadme(summary)}</p>`);
+    }
     paragraph = [];
   };
   const flushList = () => {
@@ -237,7 +275,8 @@ function fullReadmeMarkup(file) {
     if (heading) {
       flushParagraph(); flushList();
       const text = heading[2].trim();
-      if (/^table of contents$/i.test(text)) {
+      if (compact && omitHeadings.has(text.toLowerCase())) continue;
+      if (/^table(?: of contents)?$/i.test(text)) {
         const toc = [];
         let cursor = index + 1;
         while (cursor < lines.length) {
@@ -256,13 +295,31 @@ function fullReadmeMarkup(file) {
       blocks.push(`<h${level} id="${esc(headingId(text))}">${inlineReadme(text)}</h${level}>`);
       continue;
     }
+    const image = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (image) {
+      flushParagraph(); flushList();
+      const imageUrl = image[2]
+        .replace('https://qiskit.org/images/learn/course/prerequisites/prerequisites.png', 'https://raw.githubusercontent.com/Qiskit/textbook/main/notebooks/ch-prerequisites/overview/environment-setup.png')
+        .replace('https://qiskit.org/images/learn/course/quantum-states-and-qubits/bloch-sphere.png', 'https://raw.githubusercontent.com/Qiskit/textbook/main/notebooks/ch-states/images/bloch.png')
+        .replace('https://qiskit.org/images/learn/course/multiple-qubits-and-entanglement/multiple-qubits-and-entanglement.png', 'https://raw.githubusercontent.com/Qiskit/textbook/main/notebooks/ch-gates/overview/multiple-qubits-entangled-states.png')
+        .replace('https://qiskit.org/images/learn/course/quantum-protocols-and-quantum-algorithms/quantum-protocols-and-quantum-algorithms.png', 'https://raw.githubusercontent.com/Qiskit/textbook/main/notebooks/ch-algorithms/overview/header.png');
+      blocks.push(`<figure class="readme-inline-figure"><img loading="lazy" src="${esc(imageUrl)}" alt="${esc(image[1] || 'Course illustration')}"><figcaption>${esc(image[1] || 'Course illustration')}</figcaption></figure>`);
+      continue;
+    }
+    if (line.startsWith('|') || /^\|?\s*:?-{3,}/.test(line)) {
+      flushParagraph(); flushList();
+      continue;
+    }
     const item = line.match(/^[-*]\s*\[([^\]]+)\]\((https?:\/\/[^)]+|#[^)]+)\)\s*:??\s*(.*)$/);
     if (item) {
       flushParagraph();
+      if (compact) continue;
       list.push({ title: item[1].trim(), href: item[2], description: item[3].replace(/\s+/g, ' ').trim() });
       continue;
     }
+    if (compact && /^\s+/.test(raw)) continue;
     if (/^\s+/.test(raw) && list.length) {
+      if (compact) continue;
       list[list.length - 1].description = `${list[list.length - 1].description} ${line}`.trim();
       continue;
     }
@@ -331,7 +388,17 @@ function notebookOutputMarkup(slug, files, limit = 6) {
 function groupMediaMarkup(slug, files, limit = 6) {
   const images = files.filter((file) => imageExtensions.has(extension(file))).slice(0, limit);
   if (!images.length) return '';
-  return `<div class="module-figures" aria-label="Figures and result images">${images.map((file) => `<figure><img loading="lazy" src="${href(file)}" alt="${esc(labelFor(file, slug))}"><figcaption>${esc(labelFor(file, slug))}</figcaption></figure>`).join('')}</div>`;
+  const mediaSrc = (file) => {
+    const fullPath = path.join(root, slug, file);
+    try {
+      const header = fs.readFileSync(fullPath).subarray(0, 256).toString('utf8').trimStart();
+      if (header.startsWith('<?xml') || header.startsWith('<svg')) {
+        return `data:image/svg+xml;base64,${fs.readFileSync(fullPath).toString('base64')}`;
+      }
+    } catch (error) { /* keep the regular path for files that are not readable during generation */ }
+    return href(file);
+  };
+  return `<div class="module-figures" aria-label="Figures and result images">${images.map((file) => `<figure><img loading="lazy" src="${esc(mediaSrc(file))}" alt="${esc(labelFor(file, slug))}"><figcaption>${esc(labelFor(file, slug))}</figcaption></figure>`).join('')}</div>`;
 }
 
 function inlineModuleContent(group, slug) {
@@ -368,6 +435,11 @@ function groupFiles(files, slug = '') {
   for (const file of files) {
     const [first] = file.split('/');
     let key = file.includes('/') ? first : 'Root guide';
+    if (slug === 'Learn-Quantum-Computing-with-Qiskit' && qiskitLessonGroups[fileName(file)]) {
+      key = qiskitLessonGroups[fileName(file)];
+    } else if (slug === 'Learn-Quantum-Computing-with-Qiskit' && extension(file) === '.ipynb') {
+      key = 'Supplementary lessons';
+    }
     if (slug === 'Quantum-Papers-Explained-with-Code' && /^(Evidence_of_utility|Evidence_of_utility_qc)$/.test(key)) {
       key = 'Evidence for the utility of quantum computing before fault tolerance';
     }
@@ -425,7 +497,7 @@ function legacyModuleSection(group, index) {
   const primary = preferredFiles(group.files, 8);
   const remaining = group.files.filter((file) => !primary.includes(file));
   const paperTone = /paper|evidence|qrao|cut|volume|noise|virtual|quanvolution/i.test(group.name) ? 'Research topic' : 'Module';
-  return `<section class="module-section" id="${collectionId(group.name)}"><div class="module-heading"><span class="module-index">${String(index + 1).padStart(2, '0')}</span><div><span class="module-kicker">${paperTone}</span><h3>${esc(humanize(group.name))}</h3><p>${group.files.length} resource${group.files.length === 1 ? '' : 's'} · start with the guide, paper, or notebook below.</p></div></div><div class="resource-grid">${primary.map((file) => resourceCard(file)).join('')}</div>${remaining.length ? `<details class="module-more"><summary>More resources in ${esc(humanize(group.name))}<span>${remaining.length} items</span></summary><div class="resource-grid">${remaining.map((file) => resourceCard(file)).join('')}</div></details>` : ''}</section>`;
+  return `<section class="module-section" id="${collectionId(group.name)}"><div class="module-heading"><span class="module-index">${String(index + 1).padStart(2, '0')}</span><div><span class="module-kicker">${paperTone}</span><h3>${esc(humanize(group.name))}</h3><p>${group.files.length} resource${group.files.length === 1 ? '' : 's'} · browse the guide, paper, or notebook below.</p></div></div><div class="resource-grid">${primary.map((file) => resourceCard(file)).join('')}</div>${remaining.length ? `<details class="module-more"><summary>More resources in ${esc(humanize(group.name))}<span>${remaining.length} items</span></summary><div class="resource-grid">${remaining.map((file) => resourceCard(file)).join('')}</div></details>` : ''}</section>`;
 }
 
 function legacyCuratedModuleSection(group, index, slug) {
@@ -433,7 +505,7 @@ function legacyCuratedModuleSection(group, index, slug) {
   const remaining = group.files.filter((file) => !primary.includes(file));
   const paperTone = /paper|evidence|qrao|cut|volume|noise|virtual|quanvolution/i.test(group.name) ? 'Research topic' : 'Module';
   const title = groupLabel(group.name, slug);
-  return `<section class="module-section" id="${collectionId(group.name)}"><div class="module-heading"><span class="module-index">${String(index + 1).padStart(2, '0')}</span><div><span class="module-kicker">${paperTone}</span><h3>${esc(title)}</h3><p>${group.files.length} resource${group.files.length === 1 ? '' : 's'} · open a recommended item below, or browse the supporting material.</p></div></div><div class="resource-grid">${primary.map((file) => resourceCard(file, { slug })).join('')}</div>${remaining.length ? `<details class="module-more"><summary>Supporting material in ${esc(title)}<span>${remaining.length} items</span></summary><div class="resource-grid">${remaining.map((file) => resourceCard(file, { slug })).join('')}</div></details>` : ''}</section>`;
+  return `<section class="module-section" id="${collectionId(group.name)}"><div class="module-heading"><span class="module-index">${String(index + 1).padStart(2, '0')}</span><div><span class="module-kicker">${paperTone}</span><h3>${esc(title)}</h3><p>${group.files.length} resource${group.files.length === 1 ? '' : 's'} · browse the collection and supporting material.</p></div></div><div class="resource-grid">${primary.map((file) => resourceCard(file, { slug })).join('')}</div>${remaining.length ? `<details class="module-more"><summary>Supporting material in ${esc(title)}<span>${remaining.length} items</span></summary><div class="resource-grid">${remaining.map((file) => resourceCard(file, { slug })).join('')}</div></details>` : ''}</section>`;
 }
 
 function moduleSection(group, index, slug) {
@@ -503,7 +575,7 @@ function leetCodeStart(files) {
 function page(slug, meta) {
   const [title, description, category] = meta;
   const files = collectFiles(path.join(root, slug));
-  const groups = orderedGroups(groupFiles(files, slug), slug).filter((group) => curatedFiles(group).length || groupReadmeFile(group) || group.files.some((file) => imageExtensions.has(extension(file))));
+  const groups = orderedGroups(groupFiles(files, slug), slug).filter((group) => !(fullReadmeSlugs.has(slug) && group.name === 'Root guide') && (curatedFiles(group).length || groupReadmeFile(group) || group.files.some((file) => imageExtensions.has(extension(file)))));
   const readmeMap = slug === 'Learn-Quantum-Computing-For-Free' ? { navigation: '<!-- full README -->', markup: fullReadmeMarkup(readmeFile(path.join(root, slug))) } : { navigation: '', markup: '' };
   const navigation = readmeMap.markup ? '<!-- full README -->' : slug === 'LeetCode-Solutions'
     ? '<a href="#problem-library"><span>01</span><strong>Problem library</strong><small>Search and filter</small></a>'
@@ -512,7 +584,16 @@ function page(slug, meta) {
       return `<a href="#${collectionId(group.name)}"><span>${String(index + 1).padStart(2, '0')}</span><strong>${esc(groupLabel(group.name, slug))}</strong><small>${count} item${count === 1 ? '' : 's'}</small></a>`;
     }).join('');
   const guide = slug === 'LeetCode-Solutions' ? leetCodeStart(files) : '';
-  const overview = readmeMap.markup ? '' : readmeMarkup(readmeFile(path.join(root, slug)));
+  const overview = readmeMap.markup ? '' : fullReadmeSlugs.has(slug) ? fullReadmeMarkup(readmeFile(path.join(root, slug)), {
+    compact: true,
+    omitHeadings: slug === 'Qiskit-Summer-School-and-Quantum-Challenges' ? [
+      'Summer Schools',
+      'Quantum Challenges Fall',
+      'Quantum Challenges Spring',
+      'Other Quantum Challenges'
+    ] : [],
+    omitParagraphs: slug === 'Qiskit-Summer-School-and-Quantum-Challenges' ? [/summer schools?/i, /quantum challenges?/i] : []
+  }) : readmeMarkup(readmeFile(path.join(root, slug)));
   const body = slug === 'LeetCode-Solutions' ? leetCodeMarkup(files) : readmeMap.markup || groups.map((group, index) => moduleSection(group, index, slug)).join('');
   const collectionMarkup = readmeMap.markup ? '' : readmeMap.navigation ? `<div class="readme-map-nav">${readmeMap.navigation}</div>` : `<nav class="collection-nav" aria-label="Project collections">${navigation}</nav>`;
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)} · Monit Sharma</title><meta name="description" content="${esc(description)}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="project-site.css"></head><body><header class="topbar"><div class="wrap topbar-inner"><a class="brand" data-classroom-link href="https://monitsharma.github.io/"><span class="dot"></span><span>Monit Sharma</span></a><nav><a data-classroom-link href="https://monitsharma.github.io/">Quantum Classroom</a><a data-portfolio-link href="https://monitsharma.github.io/portfolio/">Portfolio</a></nav></div></header><main><section class="wrap project-hero"><div class="crumb"><a data-classroom-link href="https://monitsharma.github.io/">Quantum Classroom</a><span>/</span><span>${esc(category)}</span></div><div class="label">${esc(category)}</div><h1>${esc(title)}</h1><p class="lead">${esc(description)}</p><div class="actions"><a class="button" href="https://github.com/MonitSharma/${encodeURIComponent(slug)}#readme">Open repository ↗</a><a class="text-link" href="#content">Explore the work ↓</a></div></section><section class="project-intro"><div class="wrap"><div class="intro-grid"><div><div class="eyebrow">Overview</div><h2>Understand the project, then explore the work.</h2></div><p>Resources open inside this site. Guides, papers, figures, notebooks, and source files are organized around the project’s story.</p></div>${overview}${guide ? `<div class="resource-grid start-grid">${guide}</div>` : ''}</div></section><section class="wrap project-content" id="content"><div class="eyebrow">Collections</div>${readmeMap.navigation ? `<div class="readme-map-nav">${readmeMap.navigation}</div>` : `<nav class="collection-nav" aria-label="Project collections">${navigation}</nav>`}${body}</section></main><footer><div class="wrap"><span>Monit Sharma · open work in progress</span><a href="https://github.com/MonitSharma/${encodeURIComponent(slug)}">GitHub ↗</a></div></footer><script>if(['127.0.0.1','localhost'].includes(location.hostname)){document.querySelectorAll('[data-classroom-link]').forEach(a=>a.href=location.origin+'/MonitSharma.github.io/');document.querySelectorAll('[data-portfolio-link]').forEach(a=>a.href=location.origin+'/portfolio/');}const search=document.querySelector('[data-problem-search]');if(search){const cards=[...document.querySelectorAll('[data-problem-grid] .problem-link')],count=document.querySelector('[data-problem-count]');search.addEventListener('input',()=>{const term=search.value.trim().toLowerCase();let shown=0;cards.forEach(card=>{const visible=!term||card.textContent.toLowerCase().includes(term);card.hidden=!visible;if(visible)shown++;});count.textContent=term?'Showing '+shown+' matching problem'+(shown===1?'':'s'):'Showing all '+cards.length+' problems';});}</script><script src="project-viewer.js"></script></body></html>`;
