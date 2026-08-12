@@ -440,7 +440,7 @@
   function renderFilters() {
     const root = document.getElementById('filters');
     root.innerHTML = collections.map(collection => {
-      return `<button class="filter-btn${activeFilter === collection.value ? ' active' : ''}" data-filter="${collection.value}"><span>${collection.value}</span><span class="filter-count">${collection.inventory}</span></button>`;
+      return `<button class="filter-btn${activeFilter === collection.value ? ' active' : ''}" data-filter="${collection.value}" aria-pressed="${activeFilter === collection.value}"><span>${collection.value}</span><span class="filter-count">${collection.inventory}</span></button>`;
     }).join('');
     root.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
       activeFilter = button.dataset.filter;

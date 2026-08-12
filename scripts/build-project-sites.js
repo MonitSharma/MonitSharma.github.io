@@ -50,7 +50,7 @@ const collectionId = (value) => `module-${String(value).toLowerCase().replace(/[
 function collectFiles(dir, relative = '') {
   const output = [];
   for (const entry of fs.readdirSync(path.join(dir, relative), { withFileTypes: true })) {
-    if (excluded.has(entry.name) || ['index.html', 'project-site.css', 'project-viewer.js'].includes(entry.name)) continue;
+    if (excluded.has(entry.name) || entry.name.startsWith('.') || ['index.html', 'project-site.css', 'project-viewer.js'].includes(entry.name)) continue;
     const child = path.join(relative, entry.name);
     if (entry.isDirectory()) output.push(...collectFiles(dir, child));
     else output.push(child.replaceAll(path.sep, '/'));
@@ -125,7 +125,7 @@ function leetCodeMarkup(files) {
     const number = (group.name.match(/^\d+/) || [])[0] || '—';
     return resourceCard(entry, { kind: 'problem', label: humanize(group.name), summary: languages.length ? languages.join(' · ') : 'Problem statement and notes', action: 'Open problem', badge: `#${number}`, problemFiles: filesForProblem });
   }).join('');
-  return `<section class="problem-library" id="problem-library"><div class="module-heading"><span class="module-index">01</span><div><span class="module-kicker">Problem library</span><h3>Choose a problem. Read the approach. Compare the code.</h3><p>${problems.length} problem workspaces, each with its statement, notes, and available language implementations.</p></div></div><label class="problem-search"><span>Search problems</span><input type="search" placeholder="Try ‘median’, ‘tree’, or a problem number" data-problem-search></label><p class="problem-count" data-problem-count>Showing all ${problems.length} problems</p><div class="resource-grid problem-grid" data-problem-grid>${cards}</div></section>`;
+  return `<section class="problem-library" id="problem-library"><div class="module-heading"><span class="module-index">01</span><div><span class="module-kicker">Problem library</span><h3>Choose a problem. Read the approach. Compare the code.</h3><p>${problems.length} problem workspaces, each with its statement, notes, and available language implementations.</p></div></div><label class="problem-search"><span>Search problems</span><input type="search" aria-label="Search LeetCode problems" placeholder="Try ‘median’, ‘tree’, or a problem number" data-problem-search></label><p class="problem-count" data-problem-count>Showing all ${problems.length} problems</p><div class="resource-grid problem-grid" data-problem-grid>${cards}</div></section>`;
 }
 
 function page(slug, meta) {
