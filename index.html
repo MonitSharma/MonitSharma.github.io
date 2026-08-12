@@ -270,7 +270,7 @@
 
     <!-- AI, ML & Programming -->
     <details class="path-group">
-      <summary><span class="path-index">03</span><span><span class="path-title">AI, ML &amp; Programming</span><span class="path-description">Build breadth in language models and high-performance computing.</span></span><span class="path-count">2 resources</span></summary>
+      <summary><span class="path-index">03</span><span><span class="path-title">AI, ML &amp; Programming</span><span class="path-description">Build breadth in language models and high-performance computing.</span></span><span class="path-count">1 resource</span></summary>
     <div class="track-grid">
       <a class="track" data-kind="projects" href="https://monitsharma.github.io/The-Atelier-Lab/"><span class="src">LLM Lab</span><span class="tnum">11</span><h3>The Atelier Lab</h3><p>A working studio for language models, agents, and scientific tooling.</p><span class="go">Enter the lab →</span></a>
     </div>
@@ -278,19 +278,19 @@
 
     <!-- Foundations -->
     <details class="path-group">
-      <summary><span class="path-index">04</span><span><span class="path-title">Mathematics &amp; CS Foundations</span><span class="path-description">Strengthen linear algebra, computational physics, and problem solving.</span></span><span class="path-count">3 resources</span></summary>
+      <summary><span class="path-index">04</span><span><span class="path-title">Mathematics &amp; CS Foundations</span><span class="path-description">Strengthen linear algebra, computational physics, problem solving, and GPU programming.</span></span><span class="path-count">4 resources</span></summary>
     <div class="track-grid">
       <a class="track" data-kind="course" href="https://monitsharma.github.io/Numerical-Linear-Algebra/"><span class="src">Course</span><span class="tnum">13</span><h3>Numerical Linear Algebra</h3><p>Computational numerical linear algebra, from theory to code.</p><span class="go">Explore the course →</span></a>
       <a class="track" data-kind="course" href="https://monitsharma.github.io/Computational-Methods-in-Physics/"><span class="src">Tutorials</span><span class="tnum">14</span><h3>Computational Physics</h3><p>Classical computational methods for physics problems.</p><span class="go">See tutorials →</span></a>
       <a class="track" data-kind="solutions" href="https://monitsharma.github.io/LeetCode-Solutions/"><span class="src">Solutions</span><span class="tnum">15</span><h3>LeetCode Solutions</h3><p>435 problem workspaces across Java, Python and C++.</p><span class="go">Browse solutions →</span></a>
+      <a class="track" data-kind="projects" href="https://monitsharma.github.io/LeetGPU-Solutions/"><span class="src">GPU</span><span class="tnum">16</span><h3>LeetGPU Solutions</h3><p>CUDA kernels and GPU programming patterns for performance practice.</p><span class="go">Explore GPU work →</span></a>
     </div>
     </details>
 
     <!-- More projects -->
     <details class="path-group">
-      <summary><span class="path-index">05</span><span><span class="path-title">More Open Projects</span><span class="path-description">Follow the same thread into GPU programming, quantum algorithms, high-energy physics, and research experiments.</span></span><span class="path-count">7 resources</span></summary>
+      <summary><span class="path-index">05</span><span><span class="path-title">More Open Projects</span><span class="path-description">Follow the same thread into quantum algorithms, high-energy physics, and research experiments.</span></span><span class="path-count">6 resources</span></summary>
     <div class="track-grid">
-      <a class="track" data-kind="projects" href="https://monitsharma.github.io/LeetGPU-Solutions/"><span class="src">GPU</span><span class="tnum">16</span><h3>LeetGPU Solutions</h3><p>CUDA kernels and GPU programming patterns for performance practice.</p><span class="go">Explore GPU work →</span></a>
       <a class="track" data-kind="projects" href="https://monitsharma.github.io/qsvt-linear-solvers/"><span class="src">QSVT</span><span class="tnum">17</span><h3>QSVT Linear Solvers</h3><p>A from-scratch quantum linear-system solver, validated numerically and tested on IBM and Quantinuum hardware.</p><span class="go">Explore the solver →</span></a>
       <a class="track" data-kind="projects" href="https://monitsharma.github.io/qiskit-projects/"><span class="src">Projects</span><span class="tnum">18</span><h3>Qiskit Projects</h3><p>Applied experiments built with IBM Qiskit, from optimization to hardware.</p><span class="go">View the projects →</span></a>
       <a class="track" data-kind="projects" href="https://monitsharma.github.io/dwave_projects/"><span class="src">Annealing</span><span class="tnum">19</span><h3>D-Wave Projects</h3><p>Hands-on quantum annealing and combinatorial optimization with Ocean.</p><span class="go">Explore annealing →</span></a>
@@ -378,6 +378,13 @@
   const filterTracks = document.querySelectorAll('.track[data-kind]');
   const filterGroups = document.querySelectorAll('.path-group');
   const filterStatus = document.querySelector('.library-filter-status');
+  const savedPathGroup = sessionStorage.getItem('quantum-classroom-open-path');
+  if (savedPathGroup) {
+    filterGroups.forEach((group, index) => { group.open = String(index) === savedPathGroup; });
+  }
+  filterGroups.forEach((group, index) => group.addEventListener('toggle', () => {
+    if (group.open) sessionStorage.setItem('quantum-classroom-open-path', String(index));
+  }));
   filterButtons.forEach(button => button.addEventListener('click', () => {
     const filter = button.dataset.filter;
     let visibleCount = 0;
@@ -402,6 +409,9 @@
   if (['127.0.0.1', 'localhost'].includes(location.hostname)) {
     document.querySelectorAll('a[href^="https://monitsharma.github.io/"]').forEach(link => {
       const url = new URL(link.href);
+      // The Atelier Lab is a separate deployed site and is not part of this
+      // workspace, so do not rewrite it to a local 404 route.
+      if (url.pathname === '/The-Atelier-Lab/') return;
       link.href = url.pathname === '/' ? '/MonitSharma.github.io/' : `${url.pathname}${url.hash}`;
     });
   }
