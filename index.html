@@ -406,6 +406,14 @@
       link.href = url.pathname === '/' ? '/MonitSharma.github.io/' : `${url.pathname}${url.hash}`;
     });
   }
+  document.querySelectorAll('a[target="_blank"]').forEach(link => {
+    try {
+      if (new URL(link.href, location.href).origin === location.origin) {
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+      }
+    } catch (error) { /* keep malformed external links unchanged */ }
+  });
 </script>
 </body>
 </html>

@@ -43,7 +43,9 @@ const fileName = (file) => path.basename(file);
 const humanize = (value) => {
   const raw = String(value || 'Untitled');
   const stem = raw.startsWith('.') ? raw.slice(1) : raw.replace(/\.[^.]+$/, '');
-  return stem.replace(/^\d{1,4}[-_ ]/, '').replace(/[_-]+/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2').replace(/\s+/g, ' ').trim().replace(/\b\w/g, (letter) => letter.toUpperCase());
+  const spaced = stem.replace(/^\d{1,4}[-_ ]/, '').replace(/[_-]+/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Za-z])(\d)/g, '$1 $2').replace(/(\d)([A-Za-z])/g, '$1 $2');
+  const title = spaced.replace(/\s+/g, ' ').trim().replace(/\b\w/g, (letter) => letter.toUpperCase());
+  return title.replace(/\bQc\b/g, 'QC').replace(/\bQrao\b/g, 'QRAO').replace(/\bQml\b/g, 'QML').replace(/\bGpu\b/g, 'GPU').replace(/\bCpu\b/g, 'CPU').replace(/\bCuda\b/g, 'CUDA');
 };
 const collectionId = (value) => `module-${String(value).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'root'}`;
 
@@ -128,12 +130,27 @@ function leetCodeMarkup(files) {
   return `<section class="problem-library" id="problem-library"><div class="module-heading"><span class="module-index">01</span><div><span class="module-kicker">Problem library</span><h3>Choose a problem. Read the approach. Compare the code.</h3><p>${problems.length} problem workspaces, each with its statement, notes, and available language implementations.</p></div></div><label class="problem-search"><span>Search problems</span><input type="search" aria-label="Search LeetCode problems" placeholder="Try ‘median’, ‘tree’, or a problem number" data-problem-search></label><p class="problem-count" data-problem-count>Showing all ${problems.length} problems</p><div class="resource-grid problem-grid" data-problem-grid>${cards}</div></section>`;
 }
 
+function leetCodeStart(files) {
+  return groupFiles(files)
+    .filter((group) => group.name !== 'Root guide' && group.files.some((file) => /\.(md|c|cc|cpp|cu|go|java|js|py|rs|ts)$/i.test(file)))
+    .slice(0, 4)
+    .map((group) => {
+      const readme = group.files.find((file) => /^.+\/README\.md$/i.test(file));
+      const source = group.files.find((file) => codeExtensions.has(extension(file)));
+      const entry = readme || source || group.files[0];
+      const problemFiles = group.files.filter((file) => /\.(md|c|cc|cpp|cu|go|java|js|py|rs|ts)$/i.test(file));
+      const number = (group.name.match(/^\d+/) || [])[0] || '—';
+      return resourceCard(entry, { kind: 'problem', label: humanize(group.name), action: 'Open problem', badge: `#${number}`, problemFiles });
+    })
+    .join('');
+}
+
 function page(slug, meta) {
   const [title, description, category] = meta;
   const files = collectFiles(path.join(root, slug));
   const groups = groupFiles(files);
   const navigation = groups.map((group, index) => `<a href="#${collectionId(group.name)}"><span>${String(index + 1).padStart(2, '0')}</span><strong>${esc(humanize(group.name))}</strong><small>${group.files.length} items</small></a>`).join('');
-  const guide = preferredFiles(files, 4).map((file) => resourceCard(file, { badge: 'Start here' })).join('');
+  const guide = slug === 'LeetCode-Solutions' ? leetCodeStart(files) : preferredFiles(files, 4).map((file) => resourceCard(file, { badge: 'Start here' })).join('');
   const body = slug === 'LeetCode-Solutions' ? leetCodeMarkup(files) : groups.map(moduleSection).join('');
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)} · Monit Sharma</title><meta name="description" content="${esc(description)}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="project-site.css"></head><body><header class="topbar"><div class="wrap topbar-inner"><a class="brand" data-classroom-link href="https://monitsharma.github.io/"><span class="dot"></span><span>Monit Sharma</span></a><nav><a data-classroom-link href="https://monitsharma.github.io/">Quantum Classroom</a><a data-portfolio-link href="https://monitsharma.github.io/portfolio/">Portfolio</a></nav></div></header><main><section class="wrap project-hero"><div class="crumb"><a data-classroom-link href="https://monitsharma.github.io/">Quantum Classroom</a><span>/</span><span>${esc(category)}</span></div><div class="label">${esc(category)}</div><h1>${esc(title)}</h1><p class="lead">${esc(description)}</p><div class="actions"><a class="button" href="https://github.com/MonitSharma/${encodeURIComponent(slug)}#readme">Open repository ↗</a><a class="text-link" href="#content">Explore the work ↓</a></div></section><section class="project-intro"><div class="wrap"><div class="intro-grid"><div><div class="eyebrow">Start here</div><h2>Navigate the work as a learning collection.</h2></div><p>Each item opens within this site. Guides render as reading pages, papers and figures use a focused viewer, and notebooks retain their narrative, code, and saved outputs.</p></div><div class="resource-grid start-grid">${guide}</div></div></section><section class="wrap project-content" id="content"><div class="eyebrow">Collections</div><nav class="collection-nav" aria-label="Project collections">${navigation}</nav>${body}</section></main><footer><div class="wrap"><span>Monit Sharma · open work in progress</span><a href="https://github.com/MonitSharma/${encodeURIComponent(slug)}">GitHub ↗</a></div></footer><script>if(['127.0.0.1','localhost'].includes(location.hostname)){document.querySelectorAll('[data-classroom-link]').forEach(a=>a.href=location.origin+'/MonitSharma.github.io/');document.querySelectorAll('[data-portfolio-link]').forEach(a=>a.href=location.origin+'/portfolio/');}const search=document.querySelector('[data-problem-search]');if(search){const cards=[...document.querySelectorAll('[data-problem-grid] .problem-link')],count=document.querySelector('[data-problem-count]');search.addEventListener('input',()=>{const term=search.value.trim().toLowerCase();let shown=0;cards.forEach(card=>{const visible=!term||card.textContent.toLowerCase().includes(term);card.hidden=!visible;if(visible)shown++;});count.textContent=term?'Showing '+shown+' matching problem'+(shown===1?'':'s'):'Showing all '+cards.length+' problems';});}</script><script src="project-viewer.js"></script></body></html>`;
 }

@@ -13,6 +13,14 @@
     try { await navigator.clipboard.writeText(code); button.textContent = 'Copied'; setTimeout(() => { button.textContent = 'Copy'; }, 1400); }
     catch { button.textContent = 'Select to copy'; }
   }));
+  document.querySelectorAll('.article-figure img').forEach((image, index) => {
+    if (image.alt.trim()) return;
+    const caption = image.closest('figure')?.nextElementSibling;
+    const description = caption?.tagName === 'P' && /^Figure\s/i.test(caption.textContent.trim())
+      ? caption.textContent.trim()
+      : `Figure ${index + 1} from this article`;
+    image.alt = description;
+  });
   document.querySelectorAll('[data-lightbox]').forEach(link => link.addEventListener('click', event => {
     if (window.matchMedia('(max-width: 700px)').matches) return;
     event.preventDefault();
