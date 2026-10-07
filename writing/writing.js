@@ -1,12 +1,19 @@
 (() => {
   const root = document.documentElement;
-  const saved = localStorage.getItem('writing-theme');
-  if (saved) root.dataset.theme = saved;
+  try { root.dataset.theme = localStorage.getItem('writing-theme') || 'light'; } catch (_) {}
   const toggle = document.querySelector('[data-theme-toggle]');
+  const updateTheme = () => {
+    if (!toggle) return;
+    const dark = root.dataset.theme === 'dark';
+    toggle.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} theme`);
+    toggle.setAttribute('aria-pressed', String(dark));
+  };
+  updateTheme();
   if (toggle) toggle.addEventListener('click', () => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
-    localStorage.setItem('writing-theme', next);
+    try { localStorage.setItem('writing-theme', next); } catch (_) {}
+    updateTheme();
   });
   document.querySelectorAll('[data-copy-code]').forEach(button => button.addEventListener('click', async () => {
     const code = button.closest('.code-block').querySelector('code').innerText;

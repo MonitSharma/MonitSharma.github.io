@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Circuit Playground · The Quantum Classroom</title>
+  <meta name="description" content="Build and simulate small quantum circuits in your browser. Explore entanglement, amplitudes, phases, and measurement outcomes.">
+  <link rel="icon" href="assets/classroom-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="design-system.css"><link rel="stylesheet" href="assets/css/simulator.css?v=3">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem('writing-theme')||'light'}catch(e){}</script>
+  <script src="assets/js/quantum-engine.js?v=3" defer></script><script src="assets/js/simulator.js?v=3" defer></script><script src="assets/js/theme.js" defer></script>
+</head>
+<body class="sim-page">
+  <a class="skip-link" href="#main">Skip to circuit playground</a>
+  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><img src="assets/classroom-mark.svg" width="34" height="34" alt=""><span class="name">The Quantum Classroom</span></a><nav class="navlinks" aria-label="Primary"><a href="index.html">Classroom</a><a href="practice.html">Practice lab</a><a href="writing/index.html">Field notes</a><button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to dark theme"><svg viewBox="0 0 24 24" class="moon" aria-hidden="true"><path d="M21 13A9 9 0 0 1 11 3a9 9 0 1 0 10 10Z"/></svg><svg viewBox="0 0 24 24" class="sun" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button></nav></div></header>
+  <main id="main" class="wrap">
+    <div class="sim-page-intro"><p class="sim-kicker">Learn by changing one thing.</p><h1>Build a circuit.<br><em>See the state.</em></h1><p>Place gates on the wires, follow the state one column at a time, and discover the difference between superposition, phase, and entanglement.</p></div>
+    <section id="circuit-workbench" data-simulator="full" aria-label="Interactive circuit playground"></section>
+    <section class="sim-guide" aria-labelledby="guide-title"><div><p class="sim-kicker">Three things to try</p><h2 id="guide-title">Go beyond the histogram.</h2></div><ol><li><strong>Break a Bell pair.</strong> Load the Bell example and erase CX. The local states become pure, and |01⟩ appears.</li><li><strong>Make phase visible.</strong> Load phase interference. Remove Z between the two H gates and watch |1⟩ become |0⟩.</li><li><strong>Inspect entanglement.</strong> Step through GHZ. At the final column, each qubit has a 50/50 marginal, but the only joint outcomes are |000⟩ and |111⟩.</li></ol></section>
+  </main>
+  <footer class="sim-footer wrap">The Quantum Classroom · Original classroom implementation, inspired by <a href="https://algassert.com/quirk" target="_blank" rel="noopener">Quirk ↗</a>.</footer>
+</body></html>

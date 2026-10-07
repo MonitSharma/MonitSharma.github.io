@@ -1,52 +1,23 @@
 /* ============================================================
    Monit Sharma — shared design system
-   Type:  Newsreader (display serif) · IBM Plex Sans · IBM Plex Mono
-   Color: warm near-monochrome + quantum-violet accent
+   Type: Instrument Serif · DM Sans · DM Mono
+   Color: warm ivory + forest green, shared with the portfolio
    ============================================================ */
 
+@import url("assets/css/fonts.css");
 :root {
-  /* surfaces */
-  --paper:    oklch(0.985 0.004 95);
-  --paper-2:  oklch(0.965 0.005 95);
-  --paper-3:  oklch(0.945 0.006 95);
-  --ink:      oklch(0.205 0.012 280);
-  --ink-2:    oklch(0.42 0.012 280);
-  --ink-3:    oklch(0.58 0.010 280);
-  --line:     oklch(0.885 0.006 280);
-  --line-2:   oklch(0.92 0.005 280);
-
-  /* accent */
-  --accent-h: 285;
-  --accent:    oklch(0.525 0.16 var(--accent-h));
-  --accent-2:  oklch(0.525 0.16 var(--accent-h));
-  --accent-soft: oklch(0.94 0.035 var(--accent-h));
-  --accent-ink:  oklch(0.42 0.15 var(--accent-h));
-
-  /* type */
-  --serif: "Newsreader", Georgia, serif;
-  --sans:  "IBM Plex Sans", system-ui, -apple-system, sans-serif;
-  --mono:  "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
-
-  /* metrics */
-  --maxw: 1120px;
-  --gutter: clamp(20px, 5vw, 64px);
-  --radius: 4px;
-  --density: 1;
+  --paper:#f6f5f0; --paper-2:#efefe7; --paper-3:#e8eade; --surface:#fffefa;
+  --ink:#202e2d; --ink-2:#63716b; --ink-3:#68746d; --line:#dedfd5; --line-2:#e5e6dc; --line-strong:#c8cbbd;
+  --accent-h:160; --accent:#216653; --accent-2:#216653; --accent-soft:#e9eee5; --accent-ink:#174c3e;
+  --block:#202e2d; --block-ink:#f3f2ea; --block-muted:#b5c1b8;
+  --serif:'Instrument Serif',Georgia,serif; --sans:'DM Sans',system-ui,-apple-system,sans-serif; --mono:'DM Mono',ui-monospace,monospace;
+  --maxw:1200px; --gutter:clamp(20px,5vw,64px); --radius:8px; --density:1; color-scheme:light;
 }
-
 [data-theme="dark"] {
-  --paper:    oklch(0.185 0.012 280);
-  --paper-2:  oklch(0.225 0.013 280);
-  --paper-3:  oklch(0.255 0.014 280);
-  --ink:      oklch(0.95 0.006 95);
-  --ink-2:    oklch(0.78 0.008 280);
-  --ink-3:    oklch(0.62 0.010 280);
-  --line:     oklch(0.32 0.014 280);
-  --line-2:   oklch(0.28 0.013 280);
-  --accent:    oklch(0.70 0.15 var(--accent-h));
-  --accent-2:  oklch(0.70 0.15 var(--accent-h));
-  --accent-soft: oklch(0.30 0.05 var(--accent-h));
-  --accent-ink:  oklch(0.80 0.13 var(--accent-h));
+  --paper:#0f1715; --paper-2:#172521; --paper-3:#1c2e28; --surface:#141f1c;
+  --ink:#e6e9e1; --ink-2:#a1b0a7; --ink-3:#9baaa1; --line:#2b3a33; --line-2:#24312d; --line-strong:#3e5147;
+  --accent:#7ccaa9; --accent-2:#7ccaa9; --accent-soft:#172e25; --accent-ink:#a3dcc3;
+  --block:#182922; --block-ink:#eef0e8; --block-muted:#b0c0b6; color-scheme:dark;
 }
 
 /* ---------- reset ---------- */
@@ -189,3 +160,17 @@ h1, h2, h3 { font-weight: 500; line-height: 1.08; letter-spacing: -0.01em; }
 @media (max-width: 720px) {
   .navlinks { display: none; }
 }
+
+/* Shared interaction polish for the classroom, writing, and practice pages. */
+html{scroll-padding-top:90px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.btn{font-family:var(--sans);border-radius:999px;letter-spacing:0}
+.topbar .brand{align-items:center}.topbar .brand .name{font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:-.03em}
+.exercise-card,.cell,.lab-sidebar{border-radius:12px}.exercise-card,.cell{overflow:hidden}
+.collection-tab,.action-btn{border-radius:7px}.hint-box{background:var(--accent-soft)!important}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+.skip-link{position:fixed;top:8px;left:10px;z-index:100;padding:10px 15px;background:var(--ink);color:var(--paper);transform:translateY(-160%);font:12px var(--mono);border-radius:6px}.skip-link:focus{transform:translateY(0)}
+
+.theme-toggle svg{display:block;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.theme-toggle .sun,[data-theme="dark"] .theme-toggle .moon{display:none}[data-theme="dark"] .theme-toggle .sun{display:block}
+@media(max-width:720px){.topbar-inner{flex-direction:column;align-items:flex-start;gap:12px}.topbar .navlinks{display:flex;width:100%;overflow-x:auto;gap:18px;align-items:center;padding:3px 0 6px}.topbar .navlinks a{white-space:nowrap;font-size:12px}}
