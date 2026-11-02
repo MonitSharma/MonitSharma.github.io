@@ -7,7 +7,7 @@
       button.setAttribute('aria-pressed', String(dark));
       button.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} theme`);
     });
-    document.querySelector('meta[name="theme-color"]').content = dark ? '#0f1715' : '#f6f5f0';
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#141413' : '#ffffff';
   }
   syncTheme();
   toggle.addEventListener('click', () => {

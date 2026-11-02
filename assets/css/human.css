@@ -1,0 +1,143 @@
+/* Human pass for the classroom pages — loaded last, after design-system.css and the page CSS.
+   Same treatment as the portfolio: one text serif, mono only for code and numbers,
+   no mono-caps labels or pills, square corners, no lift-on-hover, and readable sizes
+   (much of the original text was 9–12px). Colour tokens live in design-system.css. */
+
+body{font-size:17px;line-height:1.65;font-optical-sizing:auto}
+::selection{background:#ffe9a8;color:#161616}
+
+/* Labels: sentence case in italic serif instead of tracked mono capitals */
+.eyebrow,.mono-label,.tag,.tiny,.topline,.kick,.live-badge,.track .src,.latest-writing .meta,.series-panel .meta,
+.sim-kicker,.sim-live,.brand-caption,.library-filter-status{
+  text-transform:none!important;letter-spacing:0!important;font-family:var(--serif)!important;font-style:italic}
+.eyebrow{font-size:16px;margin-bottom:14px}
+.eyebrow .num,.eyebrow::after{display:none}
+.tiny{font-size:13px;line-height:1.5}
+.topline{font-size:14px}
+.status-dot{box-shadow:none}
+.kick{display:none}
+
+/* Buttons and chips: square, quiet */
+.btn{border-radius:3px!important;font-family:var(--sans)!important;font-size:16px!important;font-weight:600;padding:11px 18px}
+.btn:hover{transform:none}
+.btn:not(.btn-ghost){background:var(--accent);border-color:var(--accent);color:#fff}
+[data-theme="dark"] .btn:not(.btn-ghost){color:#141413}
+.btn-ghost{border-color:transparent;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--line-strong)}
+.tag{border-radius:0;border:0;background:none;padding:0;font-size:14px;color:var(--ink-2)}
+.track .src{border:0;padding:0;font-size:13px}
+
+/* Sidebar */
+.brand-title{font-size:19px;letter-spacing:-.01em}
+.brand-caption{font-size:14px}
+.side-description{font-size:15px;line-height:1.6}
+.classroom-nav a{font-size:16px;border-radius:0;color:var(--ink)}
+.classroom-nav a:hover,.classroom-nav a[aria-current]{background:none;color:var(--accent)}
+.side-feature{border-radius:0;background:none;border:0;border-top:2px solid var(--ink);padding:14px 0 0}
+.side-feature p,.side-feature a,.side-links a{font-size:14.5px}
+
+/* Hero */
+.chero h1{font:600 clamp(36px,4vw,56px)/1.08 var(--serif);letter-spacing:-.02em;max-width:16ch}
+.chero h1 span{display:inline}
+.chero .sub{font-size:18.5px;color:var(--ink);line-height:1.7}
+.hero-note{font-size:15px;font-style:italic}
+.resource-stat b{font-family:var(--serif);font-weight:500}
+.resource-stat span{font-size:14px}
+.resource-stats{grid-template-columns:repeat(3,1fr)}
+
+/* Section headings: plain headings, not display slogans */
+.h-sec,section h2,.lab-promo h2{font-family:var(--serif)!important;font-weight:600!important;letter-spacing:-.015em!important;line-height:1.15!important}
+.section-intro p,.section-head p{font-size:16.5px}
+
+/* Start strip */
+.start-strip{border-radius:0;background:none;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.start-strip h2{font-size:18px!important}
+.start-strip p,.start-strip a{font-size:15px}
+
+/* Library */
+.library-note{border:0;background:none;padding:0;gap:4px 20px}
+.library-filter{border-radius:0;padding:4px 0;font-size:16px;color:var(--ink-2);border-bottom:2px solid transparent}
+.library-filter[aria-pressed="true"]{background:none;color:var(--ink);border-bottom-color:var(--accent)}
+.library-search{border-radius:0;border-width:0 0 1px}
+.library-search input{font-size:15px;width:180px}
+.library-filter-status{font-size:14px}
+.track{border-radius:2px;min-height:0}
+.track:hover{transform:none;box-shadow:none;border-color:var(--line-strong)}
+.track h3{font:600 18px/1.3 var(--serif)}
+.track p{font-size:15px;line-height:1.6}
+.track .go{font-size:15px;font-weight:600}
+.track-icon{display:none}
+
+/* Practice promo + code preview: neutral dark, not green */
+.lab-promo{border-radius:2px}
+.lab-promo p{font-size:16px}
+.lab-promo-link{background:#f3f1ea;color:#161616;border-radius:3px;font-size:15px;font-weight:600}
+.code-preview{background:#232220;border-color:#3a3936;transform:none;border-radius:2px}
+.code-preview-head,.code-preview-foot{border-color:#3a3936;color:#b8b5ac;font-size:12px}
+.code-preview pre{color:#ebe8e0;font-size:13px}
+.code-preview .comment{color:#9a968c}
+.code-preview .keyword{color:#ec9a92}
+.code-preview-foot{color:#d6d2c8}
+
+/* Writing panel on the home page */
+.latest-writing{border-radius:2px}
+.latest-writing .meta,.series-panel .meta{font-size:14px}
+.latest-writing h3,.series-panel h3{font-weight:600}
+.latest-writing p{font-size:15px}
+.series-item .st{font-size:15px}
+.series-item .sn,.series-item .sc{font-size:12px}
+
+/* Footer */
+.site-foot{background:none}
+.foot-soc a,.foot-fine{font-family:var(--serif);font-size:15px;letter-spacing:0}
+.foot-fine{font-style:italic}
+
+/* Simulator widget (home and simulator page) */
+.sim-kicker,.sim-live{font-size:14px}
+
+/* Hero headline: smaller, so it sits in four short lines at most */
+.chero h1{font-size:clamp(34px,3.3vw,48px);max-width:18ch}
+
+/* Section labels (classroom.css sets these at 10px with a more specific selector) */
+.classroom .eyebrow{font-size:16px;letter-spacing:0}
+
+/* Library cards: the source label sits above the title instead of over it */
+.track .src{position:static;display:block;margin-bottom:8px;color:var(--ink-3)}
+.path-index{background:none;border:0;border-radius:0;width:28px}
+.path-title{font-size:18px;font-weight:600}
+.path-description{font-size:15px;color:var(--ink-2)}
+.path-count{font:italic 14px var(--serif)}
+.path-group summary::after{font-family:var(--serif);font-size:22px}
+
+/* Simulator card: a figure, not a floating SaaS panel */
+[data-simulator]{border-radius:2px;box-shadow:none}
+
+/* ---------- Practice lab ---------- */
+.lab-hero h1{font:600 clamp(40px,5vw,60px)/1.05 var(--serif)!important;letter-spacing:-.02em}
+.lab-sub{font-size:18px!important;color:var(--ink)!important;line-height:1.7!important}
+.lab-kick,.lab-label,.cell-meta,.test-label,.progress-label,.filter-count,.lab-stat .label,.catalog-summary-meta,.catalog-source,
+.exercise-domain,.target-strip strong,.assessment-meta,.sample-case .case-label,.assessment-status,.result-summary{
+  text-transform:none!important;letter-spacing:0!important;font-family:var(--serif)!important;font-style:italic;font-size:14px!important}
+.lab-kick{font-size:16px!important}
+.catalog-status,.catalog-index,.exercise-position,.complete-mark,.cell-status,.hint-count,.test-detail,.supported-syntax p{font-size:13px!important}
+.sample-case code{font-size:12.5px!important}
+.action-btn{font-family:var(--serif)!important;font-size:15px!important;font-weight:600;letter-spacing:0!important;border-radius:3px}
+.exercise-picker,.exercise-picker select{font-size:14px!important}
+.hint-box{background:var(--accent-soft)!important}
+textarea{background:#1c1b19!important;color:#ebe8e0!important;font-size:14px!important}
+
+/* ---------- Simulator (page and home widget) ---------- */
+.sim-page-intro h1{font:600 clamp(40px,5vw,60px)/1.05 var(--serif)!important;letter-spacing:-.02em}
+.sim-page-intro p{font-size:18px}
+.sim-live{border-radius:0!important;border:0!important;background:none!important;padding:0!important}
+.sim-instructions,.sim-insight,.sim-footer,.sim-limit{font-size:14px!important;line-height:1.55}
+[data-simulator="compact"] .sim-instructions,[data-simulator="compact"] .sim-insight{font-size:13px!important}
+.sim-tools button,.sim-tools select,.sim-palette button,.sim-actions button,.sim-step,.sim-size,.sim-angle{font-size:13px!important;border-radius:2px!important}
+.sim-prob-row{font-size:13px!important}
+.sim-output-head>span:last-child,.sim-amplitude,.sim-shots,.sim-reduced-card>span,.sim-reduced-card b{font-size:12px!important}
+.sim-reduced-card{border-radius:2px!important}
+.sim-guide h2{font-size:clamp(28px,3vw,36px)!important}
+.sim-guide li{font-size:16.5px}
+
+/* Phones: classroom.css shrinks these labels to 8–10px at small widths */
+.sim-kicker{font-size:13px!important}
+.ll,.go,.foot-fine{font-size:13.5px!important;font-family:var(--serif)!important;letter-spacing:0!important;text-transform:none!important}
