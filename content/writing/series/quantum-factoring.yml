@@ -1,0 +1,8 @@
+name: Quantum Factoring
+slug: quantum-factoring
+color: "#6b4e16"
+description: What it would actually take to break RSA with a quantum computer — resource estimates, their assumptions, and our own arithmetic improvements.
+articles:
+  - the-fault-in-our-qubits
+  - to-you-10000-qubits-from-now
+  - shor-arithmetic-rsa-2048

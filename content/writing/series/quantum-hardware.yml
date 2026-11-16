@@ -1,8 +1,10 @@
 name: Quantum Hardware
 slug: quantum-hardware
+color: "#9b2226"
 description: What survives when quantum algorithms leave the simulator and meet calibration, compilation, and noise.
 articles:
   - quantum-optimization-on-real-hardware
+  - peaked-circuit-recovery-on-98-qubits
 upcoming:
-  - order: 2
+  - order: 3
     title: Reproducible benchmarks for noisy optimization

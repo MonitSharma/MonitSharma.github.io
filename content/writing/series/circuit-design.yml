@@ -1,0 +1,7 @@
+name: Circuit Design
+slug: circuit-design
+color: "#4a3a5c"
+description: Making specific quantum circuits smaller — oracles, arithmetic, and the scheduling problems hidden between compute and uncompute.
+articles:
+  - quantum-phase-oracle-5329-to-111
+  - the-hidden-arithmetic-behind-quantum-finance

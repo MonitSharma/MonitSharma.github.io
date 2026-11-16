@@ -1,5 +1,6 @@
 name: Quantum in Public
 slug: quantum-in-public
+color: "#3d5a3a"
 description: Accessible explanations of quantum technology, its limits, and the institutions building it.
 articles:
   - quantum-garden-quantum-communication

@@ -1,10 +1,21 @@
 # Writing build report
 
-- Published posts: 3
-- Series: 3
-- Tags: 9
-- Warnings: 29
+- Published posts: 10
+- Series: 6
+- Tags: 20
+- Warnings: 62
 
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/shor-arithmetic-rsa-2048.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=8eca041d1408
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/peaked-circuit-recovery-on-98-qubits.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=2e4d87e8d10e
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-hidden-arithmetic-behind-quantum-finance.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=dcd6f4c5aa47
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-phase-oracle-5329-to-111.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/554/1*yYxUYw8lVzQmOngkiUK7Zw.jpeg
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-phase-oracle-5329-to-111.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*74Z9JHET_DxlgS76RUlWPg.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-phase-oracle-5329-to-111.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*ldgx9FeGTFjA5RXlodg7og.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-phase-oracle-5329-to-111.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*XLYLUePgccXy5Pt3u7j2fA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-phase-oracle-5329-to-111.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*p2faYqEwACA2z0AJfLt4hA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-phase-oracle-5329-to-111.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*6STDgjP7CunTbQFhPqw86A.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-phase-oracle-5329-to-111.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*5GuIIwYhe1LymU1JOv-XyA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-phase-oracle-5329-to-111.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=73c50fdcbeb9
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*B9W-1s4kMCZOIBGw5RerAA.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*5n3tF05zMfHKfPzWxx_MeQ.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-optimization-on-real-hardware.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*2C0pqp70_BDb2xTFwSogLQ.png
@@ -25,6 +36,14 @@
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*PiRcEg76xvtoq538g7i5hA.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*Rd988EZ1-0qwGrieLgIIxw.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/mettleq-on-apple-silicon.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*8AODqPnH71FHnpguTqt8Jw.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/when-cooking-gas-becomes-a-national-security-problem.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*JTf7HYn8DTU8P7SfzmvV7g.jpeg
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/when-cooking-gas-becomes-a-national-security-problem.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*5fVT4zKAADqSYZAEtw_cXw.jpeg
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/when-cooking-gas-becomes-a-national-security-problem.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/719/1*NncUOm9f8F55hL2MiUxaJQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/when-cooking-gas-becomes-a-national-security-problem.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*MOO4KPcOe7jsvAULnc-o0g.jpeg
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/when-cooking-gas-becomes-a-national-security-problem.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*zLGxrzKCIhybsOH0TcRhsg.jpeg
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/when-cooking-gas-becomes-a-national-security-problem.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*3WBiOvEeU9HvSBrjgtbBeQ.jpeg
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/when-cooking-gas-becomes-a-national-security-problem.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*iRCt3ilbNkjYP5PO4t4J0w.jpeg
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/when-cooking-gas-becomes-a-national-security-problem.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=c47babcea911
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*Tw8egxWjN8QBQYuVOWebgQ.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*LJdlh6T-ZZg0myI6Ko2pOQ.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*NnE50qdYc7AqpFz4KFucFg.png
@@ -34,3 +53,17 @@
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*KqzWEETKRllCem0vSRE0Lw.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*HTmva1sy4LeHFeO2iuc_Mw.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*6jEULaEz8ADpwK9ckK2QnQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/to-you-10000-qubits-from-now.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*fECLrsjke0RZxozcirLgWg.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/to-you-10000-qubits-from-now.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*kfQiESIdu4_OWTnQ-5wbpQ.jpeg
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/to-you-10000-qubits-from-now.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/453/1*cui60wl1uBxBF4nY_jxnPQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/to-you-10000-qubits-from-now.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/680/1*wJuvpeTcodd-dYFwy8Ti1g.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/to-you-10000-qubits-from-now.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=9ba48f323ecb
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*dTv69OJVbyQhm5A61NQkXA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*5Gq7txAnWTdKLQKARHzqYg.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*OzlDWJ0JC8bTEruoVK3FqQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*-uF1IEYxnJeh_CUEzEv0Ow.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*EXKEeMbdfKr_tidtZKXdqg.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*i1cFLojO5vIsU4bzYOyF9g.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*S53xWOqv6pLIAMbeXBvgkw.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*D3Ks62qvAcaGfR9t6_hO-Q.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=8c66ef11f0c5

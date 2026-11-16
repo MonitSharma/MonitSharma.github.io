@@ -25,7 +25,7 @@ function pagePaths(depth = 0) {
     home: `${root}index.html`,
     writing: `${writing}index.html`,
     designSystem: `${root}design-system.css`,
-    writingCss: `${writing}writing.css?v=20261102`,
+    writingCss: `${writing}writing.css?v=20261116`,
     writingJs: `${writing}writing.js`,
     searchJs: `${writing}search.js`,
     searchIndex: `${writing}search-index.json`,
@@ -156,6 +156,11 @@ function parsePosts() {
     const parsed = matter(read(path.join(POSTS, file)));
     parsed.data.date = dateValue(parsed.data.date);
     if (parsed.data.updated) parsed.data.updated = dateValue(parsed.data.updated);
+    // Medium imports leave a placeholder excerpt; prefer the article's own subtitle line.
+    if (/^(Migrated|Imported) from Medium:/i.test(String(parsed.data.excerpt || ''))) {
+      const subtitle = parsed.content.match(/^\s*#{2,4}\s+(.+)$/m);
+      if (subtitle) parsed.data.excerpt = stripMarkdown(subtitle[1]);
+    }
     return { file: path.join(POSTS, file), filename: file, data: parsed.data, content: parsed.content };
   }).filter(post => post.data.draft !== true && post.data.status !== 'draft').sort((a, b) => String(b.data.date).localeCompare(String(a.data.date)));
 }
@@ -194,13 +199,31 @@ function renderLayout({ title, description, canonical, body, paths, extraHead = 
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(title)} · Monit Sharma</title><meta name="description" content="${esc(description)}"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="canonical" href="${esc(canonical)}"><meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${esc(canonical)}"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(description)}"><link rel="icon" href="${favicon}"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css"><link rel="stylesheet" href="${paths.designSystem}"><link rel="stylesheet" href="${paths.writingCss}">${headExtras}</head><body><a class="skip-link" href="#main">Skip to content</a><header class="writing-topbar"><div class="writing-nav"><a class="writing-brand" href="${paths.home}">Monit Sharma<span></span></a><nav aria-label="Primary"><a href="${paths.home}">Quantum Classroom</a><a href="${paths.portfolio}">Portfolio</a><a class="active" href="${paths.writing}">Writing</a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 13A9 9 0 0 1 11 3a9 9 0 1 0 10 10Z"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button></nav></div></header>${content}<footer class="writing-footer"><div><a href="${paths.writing}">Writing</a><span> · </span><a href="${paths.home}">Quantum Classroom</a><span> · </span><a href="${paths.portfolio}">Portfolio</a></div><small>Static pages, open research notes, and technical writing by Monit Sharma.</small></footer><script src="${paths.writingJs}" defer></script>${pageScripts}</body></html>`;
 }
 
+// Cover colours for the shelf, one per series in order. A series file may set `color` to override.
+const SHELF_COLORS = ['#9b2226', '#1f3a4d', '#3d5a3a', '#6b4e16', '#4a3a5c', '#2f4f4f'];
+
+function shortTitle(d) {
+  if (d.short_title) return d.short_title;
+  const head = String(d.title).match(/^(.{12,}?)(\?|:)\s/);
+  return head ? head[1] + (head[2] === '?' ? '?' : '') : d.title;
+}
+
 function renderLanding(posts, series, tags) {
-  const featured = posts[0];
-  const latest = posts.slice(0, 6);
-  const seriesHtml = [...series.values()].map(s => `<a class="series-row" href="/writing/series/${esc(s.slug)}/"><span>${esc(s.name)}</span><small>${posts.filter(p => p.data.series === s.name).length} article${posts.filter(p => p.data.series === s.name).length === 1 ? '' : 's'}</small></a>`).join('');
-  const tagNames = [...new Set(posts.flatMap(p => p.data.tags || []))].sort((a, b) => a.localeCompare(b));
-  const tagHtml = tagNames.map(tag => `<a class="tag" href="/writing/tags/${slugify(tag)}/">${esc(tag)}</a>`).join('');
-  const body = `<main id="main"><section class="writing-hero"><div class="writing-wrap"><p class="eyebrow">Technical writing · ${posts.length} published</p><h1>Writing</h1><p class="writing-lead">Research, software, hardware, and the engineering details that sit between an idea and a result.</p><form class="search-form" action="/writing/search/" role="search"><label for="writing-search">Search the writing</label><div><input id="writing-search" name="q" type="search" placeholder="Try “hardware” or “MettleQ”"><button type="submit">Search</button></div></form></div></section><section class="writing-wrap writing-section"><div class="section-heading"><p class="eyebrow">Featured</p></div>${featured ? `<div class="featured-card"><div><span class="card-kicker">${esc(featured.data.series || 'Field notes')} · ${esc(dateText(featured.data.date))}</span><h2><a href="/writing/${esc(featured.data.slug)}/">${esc(featured.data.title)}</a></h2><p>${esc(featured.data.excerpt)}</p><a class="text-link" href="/writing/${esc(featured.data.slug)}/">Read the article →</a></div></div>` : '<p>No published articles yet.</p>'}</section><section class="writing-wrap writing-section"><div class="section-heading"><p class="eyebrow">Latest</p><h2>Recent writing</h2></div><div class="writing-grid">${latest.map(card).join('')}</div></section><section class="writing-wrap writing-section split-section"><div><p class="eyebrow">Series</p><h2>Follow a thread</h2><div class="series-list">${seriesHtml || '<p>No series yet.</p>'}</div></div><div><p class="eyebrow">Tags</p><h2>Browse by subject</h2><div class="tag-list">${tagHtml}</div></div></section></main>`;
+  const seriesList = [...series.values()];
+  const colorOf = name => {
+    const i = seriesList.findIndex(s => s.name === name);
+    return i < 0 ? 'var(--ink-2)' : (seriesList[i].color || SHELF_COLORS[i % SHELF_COLORS.length]);
+  };
+  const minutes = post => Math.max(1, Math.ceil(words(post.content) / 200));
+  const books = posts.map((post, i) => {
+    const d = post.data;
+    const number = String(posts.length - i).padStart(3, '0');
+    return `<a class="shelf-book" href="/writing/${esc(d.slug)}/" style="--cover:${esc(colorOf(d.series))}" aria-label="${esc(d.title)}"><span class="shelf-no">No. ${number}</span><span class="shelf-mark" aria-hidden="true"></span><h2>${esc(shortTitle(d))}</h2><p>${esc(d.excerpt)}</p><span class="shelf-foot"><span>${esc(d.series || 'Field notes')}</span><span>${minutes(post)} min</span></span></a>`;
+  });
+  const upcoming = seriesList.flatMap(s => (s.upcoming || []).map(u => ({ ...u, series: s.name })));
+  const drafts = upcoming.map(u => `<div class="shelf-book shelf-draft"><span class="shelf-no">On the desk</span><h2>${esc(u.title)}</h2><span class="shelf-foot"><span>${esc(u.series)}</span><span>In progress</span></span></div>`);
+  const legend = seriesList.map(s => `<a href="/writing/series/${esc(s.slug)}/"><i style="background:${esc(colorOf(s.name))}"></i>${esc(s.name)}</a>`).join('');
+  const body = `<main id="main"><section class="shelf-hero writing-wrap"><div><p class="eyebrow">Writing · ${posts.length} essay${posts.length === 1 ? '' : 's'}</p><h1>The <em>shelf</em></h1></div><p class="writing-lead">Every essay as a small volume, colour-coded by the thread it belongs to.</p></section><section class="writing-wrap shelf-section"><div class="shelf-legend"><nav aria-label="Series">${legend}</nav><a class="shelf-search" href="/writing/search/">Search the writing ⌕</a></div><div class="shelf">${books.join('') || '<p>No published articles yet.</p>'}${drafts.join('')}</div><div class="shelf-links"><a href="/writing/feed.xml">RSS feed</a><a href="https://medium.com/@_monitsharma">Medium ↗</a></div></section></main>`;
   return renderLayout({ title: 'Writing', description: 'Technical writing by Monit Sharma on quantum systems, software, hardware, and research engineering.', canonical: `${SITE}/writing/`, body, paths: pagePaths(0) });
 }
 

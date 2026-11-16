@@ -8,11 +8,11 @@ const post = (data, content = '') => ({ file: data.slug || 'fixture.md', data, c
 
 test('accepts the generated fixture posts', () => {
   const posts = parsePosts();
-  assert.equal(posts.length, 3);
+  assert.ok(posts.length >= 3);
   assert.ok(!posts.some(item => item.data.slug === 'writing-on-this-site'));
-  assert.equal(validate(posts, new Map([
-    ['Quantum Hardware', {}], ['Systems & Performance', {}], ['Quantum in Public', {}]
-  ])).errors.length, 0);
+  assert.ok(posts.every(item => !/^(Migrated|Imported) from Medium:/.test(item.data.excerpt)));
+  const seriesNames = new Set(posts.map(item => item.data.series).filter(Boolean));
+  assert.equal(validate(posts, new Map([...seriesNames].map(name => [name, {}]))).errors.length, 0);
 });
 
 test('reports missing required front matter', () => {

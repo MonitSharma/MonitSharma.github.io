@@ -50,3 +50,34 @@ body{font-size:17px}
 .writing-hero h1{font-size:clamp(2.6rem,5vw,4rem)!important}
 .article-content{font-size:18px;line-height:1.7}
 .article-content a,.article-content p{overflow-wrap:anywhere}
+
+/* ---------- Writing landing: the shelf ---------- */
+.shelf-hero{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;padding-top:clamp(56px,9vh,100px);padding-bottom:36px}
+.shelf-hero .eyebrow{margin-bottom:14px}
+.shelf-hero h1{font:400 clamp(2.8rem,6.5vw,5rem)/.95 var(--serif);letter-spacing:-.035em}
+.shelf-hero h1 em{color:var(--accent);font-style:italic}
+.shelf-hero .writing-lead{max-width:40ch;margin-top:0}
+.shelf-section{padding-bottom:clamp(54px,8vw,92px)}
+.shelf-legend{display:flex;justify-content:space-between;align-items:center;gap:14px 24px;flex-wrap:wrap;margin-bottom:24px;font:13px var(--serif);color:var(--ink-2)}
+.shelf-legend nav{display:flex;gap:8px 20px;flex-wrap:wrap}
+.shelf-legend a:hover{color:var(--accent)}
+.shelf-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+.shelf-search{border-bottom:1px solid var(--line-strong);padding-bottom:2px}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:clamp(20px,3vw,36px);padding-bottom:26px;border-bottom:10px solid var(--line-strong);perspective:900px}
+.shelf-book{aspect-ratio:2/3;border-radius:3px 8px 8px 3px;padding:24px 22px;display:flex;flex-direction:column;background:var(--cover);color:#fff;position:relative;transition:transform .35s,box-shadow .35s;box-shadow:0 2px 0 rgba(0,0,0,.15),6px 10px 24px rgba(0,0,0,.15);transform-origin:left center}
+.shelf-book::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.18)}
+a.shelf-book:hover,a.shelf-book:focus-visible{transform:rotateY(-14deg) translateY(-6px);box-shadow:0 2px 0 rgba(0,0,0,.15),18px 18px 36px rgba(0,0,0,.25)}
+a.shelf-book:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.shelf-no{font:11px var(--mono);letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.shelf-mark{position:absolute;top:22px;right:22px;width:34px;height:34px;border:1.5px solid rgba(255,255,255,.55);border-radius:50%}
+.shelf-mark::after{content:"";position:absolute;inset:7px;border-radius:50%;background:rgba(255,255,255,.55)}
+.shelf-book h2{font:400 1.65rem/1.08 var(--serif);letter-spacing:-.015em;margin-top:auto;color:inherit}
+.shelf-book p{font-size:.88rem;line-height:1.45;opacity:.85;margin-top:12px;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.shelf-foot{display:flex;justify-content:space-between;gap:10px;margin-top:20px;padding-top:12px;border-top:1px solid rgba(255,255,255,.3);font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.shelf-draft{background:transparent;border:1.5px dashed var(--line-strong);color:var(--ink-3);box-shadow:none}
+.shelf-draft::before{display:none}
+.shelf-draft .shelf-foot{border-top-color:var(--line)}
+[data-theme="dark"] .shelf-book:not(.shelf-draft){filter:brightness(.88)}
+.shelf-links{display:flex;gap:22px;margin-top:22px;font:13px var(--serif);color:var(--ink-3)}
+.shelf-links a:hover{color:var(--accent)}
+@media (max-width:560px){.shelf-book{aspect-ratio:auto;min-height:320px}.shelf-book h2{margin-top:56px}.shelf-draft{min-height:220px}}
