@@ -17,6 +17,11 @@ const SERIES = path.join(CONTENT, 'series');
 const TAGS = path.join(CONTENT, 'tags.yml');
 const OUT = path.join(ROOT, 'writing');
 const SITE = 'https://monitsharma.github.io';
+// Essays are read inside the portfolio (a sibling Jekyll site published at /portfolio/).
+// The /writing/<slug>/ pages here only redirect there, so old and Medium links keep working.
+const PORTFOLIO_DIR = path.resolve(process.env.PORTFOLIO_DIR || path.join(ROOT, '..', 'portfolio'));
+const PORTFOLIO_ESSAYS = path.join(PORTFOLIO_DIR, 'essays');
+const essayUrl = slug => `${SITE}/portfolio/writing/${slug}/`;
 
 function pagePaths(depth = 0) {
   const root = '../'.repeat(depth + 1);
@@ -167,7 +172,7 @@ function parsePosts() {
 
 function card(post) {
   const d = post.data;
-  return `<article class="writing-card"><div class="card-kicker">${esc(d.series || 'Field notes')} · ${esc(dateText(d.date))}</div><h3><a href="/writing/${esc(d.slug)}/">${esc(d.title)}</a></h3><p>${esc(d.excerpt)}</p><div class="card-footer"><span>${words(post.content) ? Math.max(1, Math.ceil(words(post.content) / 200)) : 1} min read</span>${(d.tags || []).slice(0, 2).map(tag => `<a class="tag" href="/writing/tags/${slugify(tag)}/">${esc(tag)}</a>`).join('')}</div></article>`;
+  return `<article class="writing-card"><div class="card-kicker">${esc(d.series || 'Field notes')} · ${esc(dateText(d.date))}</div><h3><a href="${esc(essayUrl(d.slug))}">${esc(d.title)}</a></h3><p>${esc(d.excerpt)}</p><div class="card-footer"><span>${words(post.content) ? Math.max(1, Math.ceil(words(post.content) / 200)) : 1} min read</span>${(d.tags || []).slice(0, 2).map(tag => `<a class="tag" href="/writing/tags/${slugify(tag)}/">${esc(tag)}</a>`).join('')}</div></article>`;
 }
 
 function layout({ title, description, canonical, body, extraHead = '', scripts = '' }) {
@@ -218,7 +223,7 @@ function renderLanding(posts, series, tags) {
   const books = posts.map((post, i) => {
     const d = post.data;
     const number = String(posts.length - i).padStart(3, '0');
-    return `<a class="shelf-book" href="/writing/${esc(d.slug)}/" style="--cover:${esc(colorOf(d.series))}" aria-label="${esc(d.title)}"><span class="shelf-no">No. ${number}</span><span class="shelf-mark" aria-hidden="true"></span><h2>${esc(shortTitle(d))}</h2><p>${esc(d.excerpt)}</p><span class="shelf-foot"><span>${esc(d.series || 'Field notes')}</span><span>${minutes(post)} min</span></span></a>`;
+    return `<a class="shelf-book" href="${esc(essayUrl(d.slug))}" style="--cover:${esc(colorOf(d.series))}" aria-label="${esc(d.title)}"><span class="shelf-no">No. ${number}</span><span class="shelf-mark" aria-hidden="true"></span><h2>${esc(shortTitle(d))}</h2><p>${esc(d.excerpt)}</p><span class="shelf-foot"><span>${esc(d.series || 'Field notes')}</span><span>${minutes(post)} min</span></span></a>`;
   });
   const upcoming = seriesList.flatMap(s => (s.upcoming || []).map(u => ({ ...u, series: s.name })));
   const drafts = upcoming.map(u => `<div class="shelf-book shelf-draft"><span class="shelf-no">On the desk</span><h2>${esc(u.title)}</h2><span class="shelf-foot"><span>${esc(u.series)}</span><span>In progress</span></span></div>`);
@@ -249,11 +254,57 @@ function renderArticle(post, posts, series, tags) {
   return renderLayout({ title:d.title, description:d.excerpt, canonical, body:article, paths:pagePaths(1), extraHead:`${imageMeta}<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` });
 }
 
+// A tiny page that sends old /writing/<slug>/ links to the portfolio copy, keeping any #section.
+function renderRedirect(post) {
+  const d = post.data;
+  const target = essayUrl(d.slug);
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(d.title)} · Monit Sharma</title><meta name="robots" content="noindex"><link rel="canonical" href="${esc(target)}"><meta http-equiv="refresh" content="0; url=${esc(target)}"><script>location.replace(${JSON.stringify(target)} + location.hash);</script></head><body><p>This essay has moved to <a href="${esc(target)}">${esc(target)}</a>.</p></body></html>`;
+}
+
+// The essay as a Jekyll page for the portfolio. The portfolio's own layout adds the
+// header, footer, topic colour, and previous/next covers around this markup.
+function renderPortfolioEssay(post) {
+  const d = post.data;
+  const md = makeMarkdown();
+  const content = md.render(embedYouTube(post.content))
+    .replace(/href="(?:https:\/\/monitsharma\.github\.io)?\/writing\/([a-z0-9-]+)\/(#[^"]*)?"/g, (_, slug, hash = '') => `href="/portfolio/writing/${slug}/${hash}"`);
+  const headings = toc(post.content);
+  const firstImage = post.content.match(/!\[[^\]]*\]\((https?:\/\/[^\s)]+)/);
+  const minutes = Math.max(1, Math.ceil(words(post.content) / 200));
+  const tocHtml = headings.length > 2 ? `<nav class="essay-toc" aria-label="Contents"><p>Contents</p><ol>${headings.map(h => `<li class="toc-${h.level}"><a href="#${esc(h.id)}">${esc(h.title)}</a></li>`).join('')}</ol></nav>` : '<div aria-hidden="true"></div>';
+  const video = d.youtube_url ? `<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/${youtubeId(d.youtube_url)}" title="${esc(d.youtube_title || d.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>` : '';
+  const links = [['Medium', d.medium_url], ['Code', d.github_url], ['Paper', d.paper_url]].filter(([, url]) => url).map(([label, url]) => `<a href="${esc(url)}" rel="noopener">${label} ↗</a>`).join('');
+  const source = d.medium_url ? `<p class="essay-source">Also published on <a href="${esc(d.medium_url)}" rel="noopener">Medium</a>.</p>` : '';
+  const front = [
+    '---',
+    '# Generated by MonitSharma.github.io/scripts/writing-build.js. Edit the Markdown there, not this file.',
+    'layout: editorial',
+    'nav: writing',
+    'essay: true',
+    'og_type: article',
+    `title: ${JSON.stringify(d.title)}`,
+    `description: ${JSON.stringify(stripMarkdown(d.excerpt))}`,
+    `permalink: /writing/${d.slug}/`,
+    `date: ${d.date}`,
+    firstImage ? `image: ${JSON.stringify(firstImage[1])}` : null,
+    /class="katex/.test(content) ? 'math: true' : null,
+    '---',
+  ].filter(Boolean).join('\n');
+  const kicker = `<p class="essay-kicker">{{ topic.title | default: ${JSON.stringify(d.series || 'Essay')} | escape }}</p>`;
+  const header = `<h1>${esc(d.title)}</h1><p class="essay-dek">${esc(stripMarkdown(d.excerpt))}</p><div class="essay-meta"><span>${esc(dateText(d.date))}</span><span>${minutes} min read</span>${links}</div>`;
+  return `${front}
+{% include writing/essay-open.html %}
+<header class="essay-header">${kicker}{% raw %}${header}{% endraw %}</header>
+{% raw %}<div class="essay-layout">${tocHtml}<div class="essay-body">${video}${content}${source}</div></div>{% endraw %}
+{% include writing/essay-close.html %}
+`;
+}
+
 function renderSeries(name, posts, seriesData) {
   const list = seriesData.articles.length ? seriesData.articles.map(slug => posts.find(p => p.data.slug === slug)).filter(Boolean) : posts.filter(p => p.data.series === name).sort((a,b) => (a.data.series_order || 99) - (b.data.series_order || 99));
   const known = new Set(list.map(p => p.data.slug));
   const upcoming = (seriesData.upcoming || []).map(item => `<li class="upcoming"><span>${esc(item.order || '—')}</span><div><strong>${esc(item.title)}</strong><small>Upcoming</small></div></li>`).join('');
-  const body = `<main id="main"><header class="series-header writing-wrap"><a class="back-link" href="/writing/">← Back to writing</a><p class="eyebrow">Series · ${list.length} article${list.length === 1 ? '' : 's'}</p><h1>${esc(name)}</h1><p class="writing-lead">${esc(seriesData.description || '')}</p></header><section class="writing-wrap series-section"><ol class="series-progress">${list.map((p, i) => `<li><span>${String(i + 1).padStart(2, '0')}</span><div><a href="/writing/${esc(p.data.slug)}/">${esc(p.data.title)}</a><small>${esc(dateText(p.data.date))}</small></div></li>`).join('')}${upcoming}</ol></section></main>`;
+  const body = `<main id="main"><header class="series-header writing-wrap"><a class="back-link" href="/writing/">← Back to writing</a><p class="eyebrow">Series · ${list.length} article${list.length === 1 ? '' : 's'}</p><h1>${esc(name)}</h1><p class="writing-lead">${esc(seriesData.description || '')}</p></header><section class="writing-wrap series-section"><ol class="series-progress">${list.map((p, i) => `<li><span>${String(i + 1).padStart(2, '0')}</span><div><a href="${esc(essayUrl(p.data.slug))}">${esc(p.data.title)}</a><small>${esc(dateText(p.data.date))}</small></div></li>`).join('')}${upcoming}</ol></section></main>`;
   return renderLayout({ title:name, description:seriesData.description || `Articles in the ${name} series.`, canonical:`${SITE}/writing/series/${seriesData.slug}/`, body, paths:pagePaths(2) });
 }
 
@@ -269,7 +320,7 @@ function renderSearch() {
 }
 
 function buildFeed(posts) {
-  const items = posts.map(p => `<item><title><![CDATA[${p.data.title}]]></title><link>${SITE}/writing/${p.data.slug}/</link><guid isPermaLink="true">${SITE}/writing/${p.data.slug}/</guid><pubDate>${new Date(`${p.data.date}T00:00:00Z`).toUTCString()}</pubDate><description><![CDATA[${p.data.excerpt}]]></description></item>`).join('');
+  const items = posts.map(p => `<item><title><![CDATA[${p.data.title}]]></title><link>${essayUrl(p.data.slug)}</link><guid isPermaLink="true">${essayUrl(p.data.slug)}</guid><pubDate>${new Date(`${p.data.date}T00:00:00Z`).toUTCString()}</pubDate><description><![CDATA[${p.data.excerpt}]]></description></item>`).join('');
   return `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Monit Sharma · Writing</title><link>${SITE}/writing/</link><description>Technical writing on quantum systems, software, hardware, and research engineering.</description>${items}</channel></rss>`;
 }
 
@@ -296,11 +347,18 @@ function build() {
   write(path.join(OUT, 'index.html'), renderLanding(posts, series, tags));
   write(path.join(OUT, 'search', 'index.html'), renderSearch());
   write(path.join(OUT, 'feed.xml'), buildFeed(posts));
-  write(path.join(OUT, 'search-index.json'), JSON.stringify(posts.map(p => ({ title:p.data.title, excerpt:p.data.excerpt, tags:p.data.tags || [], series:p.data.series || '', date:p.data.date, url:`/writing/${p.data.slug}/`, text:stripMarkdown(p.content) })), null, 2));
-  for (const post of posts) write(path.join(OUT, post.data.slug, 'index.html'), renderArticle(post, posts, series, tags));
+  write(path.join(OUT, 'search-index.json'), JSON.stringify(posts.map(p => ({ title:p.data.title, excerpt:p.data.excerpt, tags:p.data.tags || [], series:p.data.series || '', date:p.data.date, url:essayUrl(p.data.slug), text:stripMarkdown(p.content) })), null, 2));
+  for (const post of posts) write(path.join(OUT, post.data.slug, 'index.html'), renderRedirect(post));
+  if (fs.existsSync(path.join(PORTFOLIO_DIR, '_config.yml'))) {
+    ensure(PORTFOLIO_ESSAYS);
+    for (const file of fs.readdirSync(PORTFOLIO_ESSAYS)) if (file.endsWith('.html') && !postSlugs.has(file.slice(0, -5))) fs.rmSync(path.join(PORTFOLIO_ESSAYS, file));
+    for (const post of posts) write(path.join(PORTFOLIO_ESSAYS, `${post.data.slug}.html`), renderPortfolioEssay(post));
+  } else {
+    console.warn(`Portfolio not found at ${PORTFOLIO_DIR}; essay pages were not exported. Set PORTFOLIO_DIR to its checkout.`);
+  }
   for (const s of series.values()) write(path.join(OUT, 'series', s.slug, 'index.html'), renderSeries(s.name, posts, s));
   for (const tag of [...new Set(posts.flatMap(p => p.data.tags || []))]) write(path.join(OUT, 'tags', slugify(tag), 'index.html'), renderTag(tag, posts, tags[tag]));
-  const urls = [`${SITE}/`, `${SITE}/writing/`, ...posts.map(p => `${SITE}/writing/${p.data.slug}/`), ...[...series.values()].map(s => `${SITE}/writing/series/${s.slug}/`), ...[...new Set(posts.flatMap(p => p.data.tags || []))].map(t => `${SITE}/writing/tags/${slugify(t)}/`)];
+  const urls = [`${SITE}/`, `${SITE}/writing/`, ...[...series.values()].map(s => `${SITE}/writing/series/${s.slug}/`), ...[...new Set(posts.flatMap(p => p.data.tags || []))].map(t => `${SITE}/writing/tags/${slugify(t)}/`)];
   write(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map(url => `<url><loc>${url}</loc></url>`).join('')}</urlset>`);
   write(path.join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
   write(path.join(ROOT, 'reports', 'writing-build-report.md'), `# Writing build report\n\n- Published posts: ${posts.length}\n- Series: ${series.size}\n- Tags: ${new Set(posts.flatMap(p => p.data.tags || [])).size}\n- Warnings: ${result.warnings.length}\n\n${result.warnings.map(w => `- ${w}`).join('\n') || 'No warnings.'}\n`);
@@ -308,4 +366,4 @@ function build() {
 }
 
 if (require.main === module) build();
-module.exports = { build, parsePosts, validate, youtubeId, slugify, renderArticle };
+module.exports = { build, parsePosts, validate, youtubeId, slugify, renderArticle, renderPortfolioEssay, renderRedirect };

@@ -61,10 +61,26 @@ test('generated writing pages work from a local file preview', () => {
   const article = fs.readFileSync(path.join(__dirname, '..', 'writing', 'quantum-optimization-on-real-hardware', 'index.html'), 'utf8');
   const series = fs.readFileSync(path.join(__dirname, '..', 'writing', 'series', 'quantum-in-public', 'index.html'), 'utf8');
   const search = fs.readFileSync(path.join(__dirname, '..', 'writing', 'search', 'index.html'), 'utf8');
-  assert.match(article, /href="\.\.\/\.\.\/design-system\.css"/);
-  assert.match(article, /src="\.\.\/writing\.js"/);
-  assert.doesNotMatch(article, /medium\.com\/_\/stat/);
+  // Essays now live in the portfolio; the archive page only redirects there.
+  assert.match(article, /http-equiv="refresh" content="0; url=https:\/\/monitsharma\.github\.io\/portfolio\/writing\/quantum-optimization-on-real-hardware\/"/);
+  assert.match(article, /rel="canonical" href="https:\/\/monitsharma\.github\.io\/portfolio\/writing\/quantum-optimization-on-real-hardware\/"/);
   assert.match(series, /href="\.\.\/\.\.\/\.\.\/design-system\.css"/);
-  assert.match(series, /href="\.\.\/\.\.\/quantum-garden-quantum-communication\/index\.html"/);
+  assert.match(series, /href="https:\/\/monitsharma\.github\.io\/portfolio\/writing\/quantum-garden-quantum-communication\/"/);
   assert.match(search, /src="\.\.\/search\.js"/);
+});
+
+test('exports essays as portfolio pages', () => {
+  const { renderPortfolioEssay } = require('../scripts/writing-build');
+  const page = renderPortfolioEssay({
+    data: { title: 'A "quoted" title', slug: 'fixture-essay', date: '2026-01-01', excerpt: 'Short dek.', series: 'Quantum Hardware', medium_url: 'https://medium.com/x' },
+    content: '## One\n\nSee [the other essay](/writing/other-essay/#part).\n\n## Two\n\n## Three\n\n{{ not liquid }}\n'
+  });
+  assert.match(page, /^---\n/);
+  assert.match(page, /permalink: \/writing\/fixture-essay\//);
+  assert.match(page, /title: "A \\"quoted\\" title"/);
+  assert.match(page, /href="\/portfolio\/writing\/other-essay\/#part"/);
+  assert.match(page, /\{% raw %\}[\s\S]*\{\{ not liquid \}\}[\s\S]*\{% endraw %\}/);
+  assert.match(page, /class="essay-toc"/);
+  assert.match(page, /medium\.com\/x/);
+  assert.doesNotMatch(page, /medium\.com\/_\/stat/);
 });
