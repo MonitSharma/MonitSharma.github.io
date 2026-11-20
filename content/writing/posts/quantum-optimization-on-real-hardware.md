@@ -25,7 +25,7 @@ draft: false
 
 _From abstract quantum circuits to hardware-native execution: compilation, connectivity and noise can materially reshape a quantum optimization algorithm._
 
-Our paper, **“**[**From Circuits to Hardware: Benchmarking Standard and Qubit-Efficient Quantum Optimization on Real Hardware**](https://arxiv.org/abs/2607.11637)View on alphaXiv**,”** has been accepted for publication in [_Quantum Science and Technology_](https://iopscience.iop.org/article/10.1088/2058-9565/ae94a4).
+Our paper, **“**[**From Circuits to Hardware: Benchmarking Standard and Qubit-Efficient Quantum Optimization on Real Hardware**](https://arxiv.org/abs/2607.11637)**,”** has been accepted for publication in [_Quantum Science and Technology_](https://iopscience.iop.org/article/10.1088/2058-9565/ae94a4).
 
 The study began with a simple concern: quantum optimization algorithms are often assessed before the most consequential parts of real execution have occurred.
 
@@ -45,11 +45,11 @@ The study evaluates seven quantum optimization methods:
 
 -   [Variational Quantum Eigensolver, or VQE](https://www.nature.com/articles/ncomms5213);
 -   [Conditional Value-at-Risk VQE](https://quantum-journal.org/papers/q-2020-04-20-256/);
--   [standard QAOA](https://arxiv.org/abs/1411.4028)View on alphaXivView on alphaXiv;
+-   [standard QAOA](https://arxiv.org/abs/1411.4028);
 -   multi-angle QAOA;
 -   warm-start QAOA;
--   [Pauli Correlation Encoding, or PCE](https://arxiv.org/abs/2401.09421)View on alphaXivView on alphaXiv; and
--   [Quantum Random Access Optimization, or QRAO](https://arxiv.org/abs/2111.03167)View on alphaXivView on alphaXiv.
+-   [Pauli Correlation Encoding, or PCE](https://arxiv.org/abs/2401.09421); and
+-   [Quantum Random Access Optimization, or QRAO](https://arxiv.org/abs/2111.03167).
 
 These methods span conventional variational algorithms, structured QAOA-style methods and qubit-efficient encodings.
 
