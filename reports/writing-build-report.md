@@ -1,9 +1,9 @@
 # Writing build report
 
-- Published posts: 12
-- Series: 6
-- Tags: 22
-- Warnings: 90
+- Published posts: 11
+- Series: 5
+- Tags: 21
+- Warnings: 81
 
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/shor-arithmetic-rsa-2048.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=8eca041d1408
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/peaked-circuit-recovery-on-98-qubits.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=2e4d87e8d10e
@@ -44,15 +44,6 @@
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/when-cooking-gas-becomes-a-national-security-problem.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*3WBiOvEeU9HvSBrjgtbBeQ.jpeg
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/when-cooking-gas-becomes-a-national-security-problem.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*iRCt3ilbNkjYP5PO4t4J0w.jpeg
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/when-cooking-gas-becomes-a-national-security-problem.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=c47babcea911
-- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*Tw8egxWjN8QBQYuVOWebgQ.png
-- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*LJdlh6T-ZZg0myI6Ko2pOQ.png
-- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*NnE50qdYc7AqpFz4KFucFg.png
-- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*1AbwgWKof-vSUw4S-7B7SA.png
-- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*3JrpdhNy8IqxTm35hd0mMQ.png
-- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*C4ej07h24KL2fOuoiuW0xw.png
-- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*KqzWEETKRllCem0vSRE0Lw.png
-- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*HTmva1sy4LeHFeO2iuc_Mw.png
-- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/quantum-garden-quantum-communication.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*6jEULaEz8ADpwK9ckK2QnQ.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/to-you-10000-qubits-from-now.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*fECLrsjke0RZxozcirLgWg.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/to-you-10000-qubits-from-now.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*kfQiESIdu4_OWTnQ-5wbpQ.jpeg
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/to-you-10000-qubits-from-now.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/453/1*cui60wl1uBxBF4nY_jxnPQ.png

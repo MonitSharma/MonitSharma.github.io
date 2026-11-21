@@ -59,13 +59,13 @@ test('generated output contains publishing features and metadata', () => {
 
 test('generated writing pages work from a local file preview', () => {
   const article = fs.readFileSync(path.join(__dirname, '..', 'writing', 'quantum-optimization-on-real-hardware', 'index.html'), 'utf8');
-  const series = fs.readFileSync(path.join(__dirname, '..', 'writing', 'series', 'quantum-in-public', 'index.html'), 'utf8');
+  const series = fs.readFileSync(path.join(__dirname, '..', 'writing', 'series', 'quantum-hardware', 'index.html'), 'utf8');
   const search = fs.readFileSync(path.join(__dirname, '..', 'writing', 'search', 'index.html'), 'utf8');
   // Essays now live in the portfolio; the archive page only redirects there.
   assert.match(article, /http-equiv="refresh" content="0; url=https:\/\/monitsharma\.github\.io\/portfolio\/writing\/quantum-optimization-on-real-hardware\/"/);
   assert.match(article, /rel="canonical" href="https:\/\/monitsharma\.github\.io\/portfolio\/writing\/quantum-optimization-on-real-hardware\/"/);
   assert.match(series, /href="\.\.\/\.\.\/\.\.\/design-system\.css"/);
-  assert.match(series, /href="https:\/\/monitsharma\.github\.io\/portfolio\/writing\/quantum-garden-quantum-communication\/"/);
+  assert.match(series, /href="https:\/\/monitsharma\.github\.io\/portfolio\/writing\/peaked-circuit-recovery-on-98-qubits\/"/);
   assert.match(search, /src="\.\.\/search\.js"/);
 });
 

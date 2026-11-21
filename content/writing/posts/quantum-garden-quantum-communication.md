@@ -16,7 +16,7 @@ authors:
   - Monit Sharma
 canonical_url: https://monitsharma.github.io/writing/quantum-garden-quantum-communication/
 medium_url: https://medium.com/@_monitsharma/the-key-to-the-quantum-garden-indias-1-000-km-leap-into-un-hackable-communication-ab6277f0f98e?source=rss-f5df08a10024------2
-draft: false
+draft: true
 ---
 
 #### Can you eavesdrop on a conversation that rewrites itself the moment you listen?
