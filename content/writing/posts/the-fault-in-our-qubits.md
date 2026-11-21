@@ -4,7 +4,7 @@ slug: the-fault-in-our-qubits
 date: 2026-03-29T00:00:00.000Z
 status: published
 series: Quantum Factoring
-series_order: 1
+series_order: 3
 excerpt: What It Would Actually Take to Break RSA with a Quantum Computer
 tags:
   - quantum factoring

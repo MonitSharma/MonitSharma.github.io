@@ -4,7 +4,7 @@ slug: to-you-10000-qubits-from-now
 date: 2026-04-01T00:00:00.000Z
 status: published
 series: Quantum Factoring
-series_order: 2
+series_order: 4
 excerpt: Inside the Most Ambitious Resource Estimate for Quantum Factoring Ever
   Published
 tags:

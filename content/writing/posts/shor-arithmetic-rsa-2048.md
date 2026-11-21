@@ -4,7 +4,7 @@ slug: shor-arithmetic-rsa-2048
 date: 2026-11-09T00:00:00.000Z
 status: published
 series: Quantum Factoring
-series_order: 3
+series_order: 5
 excerpt: One quantum table lookup can serve several primes. At 1,806 logical
   qubits, that idea helped us cut the estimated Toffoli count by 46%.
 tags:

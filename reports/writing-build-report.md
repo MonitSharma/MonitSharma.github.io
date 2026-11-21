@@ -1,9 +1,9 @@
 # Writing build report
 
-- Published posts: 10
+- Published posts: 12
 - Series: 6
-- Tags: 20
-- Warnings: 62
+- Tags: 22
+- Warnings: 90
 
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/shor-arithmetic-rsa-2048.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=8eca041d1408
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/peaked-circuit-recovery-on-98-qubits.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=2e4d87e8d10e
@@ -67,3 +67,31 @@
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*S53xWOqv6pLIAMbeXBvgkw.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*D3Ks62qvAcaGfR9t6_hO-Q.png
 - /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-fault-in-our-qubits.md: image needs meaningful alt text: https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=8c66ef11f0c5
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*bhTkK0hjhAauKGPMwv6Wwg.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*W8Cv8jl3Ya9FHgK0hEMgGA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*iwPzjGW0EbOKBE0xKeTG2w.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*PPsis8a-QEn8_zjRRNHoag.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*KnHkgpZ36DaeeYj1jwKp8w.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*Kux6RukxfrGnCSqlO-gK1w.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*r4qYpG09_WxfhxIBh0wTHA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*SvsNQMFK4Qc4mUqmxauXwQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*95UEOaVFzs-A7Oc7HKP_FA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*1eCi02GGp37ZkiUjOpWJYQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*AazJgdAy7tv6uYKygkaz9g.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*Tb1OUqaj8Vj4EPIVGTgXiA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*hOr-AV317o5f3ysoiJHwpQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/the-emperor-has-no-factors.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*qYrOzpC1GnCKuqArxEEZFQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*boBydVXa2LefrnxglEIRig.jpeg
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*ervQTu1LeN_tvChTDBWmKw.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*UX2A0s4MC6f-_DqIUN9bVA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*23r_PY08oV0iPxlm11DNMw.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*S6_4JO-KLg5fWEwVQOyEFA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*u4pOtfo-6KDNzR-SqtczDw.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*3updJiRNwwafF7c6FQF22w.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*K3zLp6fENdhdpOHW03H19w.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*GZldfPqyAXDER2g7kaR9hw.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*hn03wv9R8rZaW2Cg9g4l9A.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*v08-oUiCr86lstRuM0f1_A.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*4v5CJ-wv9DTD7Tcoe_S1tQ.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*RudR6GEM_mVcviOwlmpITA.png
+- /Users/monitsharma/code_projects/personal_website/MonitSharma.github.io/content/writing/posts/sometimes-its-too-slow-for-shor.md: image needs meaningful alt text: https://cdn-images-1.medium.com/max/1024/1*n8WEf1CiuhKDqvlfdOEXiA.png
