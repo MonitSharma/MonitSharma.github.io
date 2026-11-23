@@ -1,0 +1,50 @@
+name: Site checks
+
+# Runs on every push and pull request. Fails on broken tests or on writing pages
+# that were not regenerated; the link and accessibility audits are uploaded as reports.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Writing pages are up to date
+        # The build also exports essays to the portfolio repository when it is checked
+        # out beside this one; here it only regenerates this repository's pages.
+        run: |
+          npm run build:writing
+          git diff --exit-code -- writing sitemap.xml || {
+            echo "::error::Writing pages are out of date. Run 'npm run build:writing' and commit the result."
+            exit 1
+          }
+
+      - name: Link and accessibility audits
+        run: |
+          npm run audit:links
+          npm run audit:a11y
+
+      - name: Upload audit reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-reports
+          path: reports/
