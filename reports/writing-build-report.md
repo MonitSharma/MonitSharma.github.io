@@ -1,6 +1,6 @@
 # Writing build report
 
-- Published posts: 11
+- Published posts: 12
 - Series: 5
 - Tags: 21
 - Warnings: 81
