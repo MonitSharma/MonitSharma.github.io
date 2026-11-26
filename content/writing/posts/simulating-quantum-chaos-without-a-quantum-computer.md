@@ -126,7 +126,7 @@ P4 turned out to be an excellent stand-in for G4. Pauli-path at our best setting
 
 These checks drove every decision that followed:
 
-- **(a) Threshold matters a lot for fSim circuits.** On Y4, Pauli-path at δ = 1e-4 scored corr² 0.70. At the tightest threshold the server accepted, it scored **0.99**. Truncation mostly *shrinks* the values toward zero, and the shrinkage is uneven across circuits.
+- **(a) The tighter GPU configuration was more accurate on Y4.** On the same 12 probes, corr² rose from 0.958 to 0.988, and root mean square error fell from 0.0540 to 0.0167. We changed both the backend and the truncation threshold, so this comparison measures their combined effect. The Y4 plots above show the available results for each configuration, covering 19 CPU probes and 12 GPU probes.
 - **(b) MPS is the wrong tool for the grid circuits.** On P3, MPS at χ = 128 reported −0.009 for a circuit whose true value is −0.47. Pauli-path got −0.471. MPS's corr² looks fine on six points only because it happens to preserve the ranking. The values are 50× too small, so we dropped MPS for G3.
 - **(c) G4-like circuits stay hard.** On P4, even the tightest Pauli-path settings shrink the values by 2–5×, with a few outright errors.
 
